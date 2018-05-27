@@ -149,26 +149,26 @@ void imprimirEnPantalla(char texto[])
 void generarTitulo(char texto[])
 {
     int i;
-    char nuevoTitulo[TITULO_LARGO_MAX] = "| ";
+    char nuevoTitulo[TITULO_LARGO_MAX] = "∫ ";
 
     strcat(nuevoTitulo, texto);
-    strcat(nuevoTitulo, " |");
+    strcat(nuevoTitulo, " ∫");
 
-    strcpy(texto, "\n+");
+    strcpy(texto, "\n…");
     for(i=0 ; i<strlen(nuevoTitulo)-2 ; i++)
     {
-        strcat(texto, "-");
+        strcat(texto, "Õ");
     }
-    strcat(texto, "+\n");
+    strcat(texto, "ª\n");
 
     strcat(texto, nuevoTitulo);
 
-    strcat(texto, "\n+");
+    strcat(texto, "\n»");
     for(i=0 ; i<strlen(nuevoTitulo)-2 ; i++)
     {
-        strcat(texto, "-");
+        strcat(texto, "Õ");
     }
-    strcat(texto, "+");
+    strcat(texto, "º");
 
 }
 

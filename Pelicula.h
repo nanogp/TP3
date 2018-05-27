@@ -6,13 +6,13 @@
 #include "Menu.h"
 
 //LIMITES
-#define PELICULA_CANT_MAX 1000
+#define PELICULA_CANT_MAX 4
 #define PELICULA_LARGO_TITULO 20
 #define PELICULA_LARGO_GENERO 20
-#define PELICULA_LARGO_DESCRIPCION 50
-#define PELICULA_LARGO_LINK 50
+#define PELICULA_LARGO_DESCRIPCION 500
+#define PELICULA_LARGO_LINK 500
 #define PELICULA_PUNTAJE_MIN 1
-#define PELICULA_PUNTAJE_MAX 10
+#define PELICULA_PUNTAJE_MAX 100
 #define PELICULA_DURACION_MIN 1
 #define PELICULA_DURACION_MAX 300
 #define PELICULA_ID_MIN 1
@@ -20,12 +20,6 @@
 #define PELICULA_LARGO_RESERVAS 10
 
 //CONSTANTES
-#define PELICULA_K_A 1
-#define PELICULA_K_B 2
-#define PELICULA_K_OTROS 3
-#define PELICULA_K_TXT_A "Oro"
-#define PELICULA_K_TXT_B "Petroleo"
-#define PELICULA_K_TXT_OTROS "Otros"
 
 //TITULOS
 #define PELICULA_ALTA_TITULO "ALTA DE PELICULA"
@@ -37,42 +31,47 @@
 #define PELICULA_MSJ_ID_NO_EXISTE "\nEl ID de Pelicula ingresado no existe"
 #define PELICULA_MSJ_LISTA_VACIA "\n\nLa lista de Peliculas esta vacia o todos los registros se dieron de baja"
 #define PELICULA_MSJ_NO_MAS_LUGAR "\nNo hay mas lugares disponibles para altas de Pelicula"
+#define PELICULA_MSJ_REINGRESE_ID "\nEl ID debe ser un numero mayor que cero. Reingrese un ID valido: "
+#define PELICULA_MSJ_REINGRESE_TITULO "\nTitulo muy largo. Reingrese por favor hasta 20 caracteres: "
+#define PELICULA_MSJ_REINGRESE_GENERO "\nGenero muy largo. Reingrese por favor hasta 20 caracteres: "
+#define PELICULA_MSJ_REINGRESE_DESCRIPCION "\nDescripcion muy larga. Reingrese por favor hasta 500 caracteres: "
+#define PELICULA_MSJ_REINGRESE_DURACION "\nDuracion no valida. Reingrese por favor un numero entre 1 y 300: "
+#define PELICULA_MSJ_REINGRESE_PUNTAJE "\nPuntaje no valido. Reingrese por favor un numero entre 1 y 100: "
+#define PELICULA_MSJ_REINGRESE_LINK "\nLink a imagen muy largo. Reingrese por favor hasta 500 caracteres: "
 
 //MENSAJES INFO
-#define PELICULA_MSJ_CONFIRMAR_BAJA "Confirma que desea dar de baja dicho Pelicula?"
-#define PELICULA_MSJ_ALTA_OK "\nEl Pelicula se dio de alta"
-#define PELICULA_MSJ_BAJA_OK "\nEl Pelicula se dio de baja"
-#define PELICULA_MSJ_MODIFICACION_OK "\nEl Pelicula se modifico"
-#define PELICULA_MSJ_REGISTRO_ACTUAL "\n\nPelicula actual: \0"
-#define PELICULA_MSJ_REGISTRO_MODIFICADO "\n\nPelicula modificado: \0"
+#define PELICULA_MSJ_CONFIRMAR_BAJA "Confirma que desea dar de baja dicha Pelicula?"
+#define PELICULA_MSJ_ALTA_OK "\nLa Pelicula se dio de alta"
+#define PELICULA_MSJ_BAJA_OK "\nLa Pelicula se dio de baja"
+#define PELICULA_MSJ_MODIFICACION_SIN_CAMBIOS "\nNo hubo cambio alguno"
+#define PELICULA_MSJ_MODIFICACION_OK "\nLa Pelicula se modifico"
+#define PELICULA_MSJ_REGISTRO_ACTUAL "\n\nREGISTRO DE PELICULA ACTUAL:\n컴컴컴컴컴컴컴컴컴컴컴컴컴컴"
+#define PELICULA_MSJ_REGISTRO_MODIFICADO "\n\nRegistro modificado:\n컴컴컴컴컴컴컴컴컴컴"
 
 //MENSAJES INPUT
-#define PELICULA_MSJ_INGRESE_ID "\n\nIngrese el ID de Pelicula: \0"
-#define PELICULA_MSJ_REINGRESE_ID "\nEl ID debe ser un numero mayor que cero. Reingrese un ID valido: \0"
-#define PELICULA_MSJ_INGRESE_TITULO "\nIngrese Titulo Pelicula: \0"
-#define PELICULA_MSJ_REINGRESE_TITULO "\nTitulo muy largo. Reingrese por favor: \0"
-#define PELICULA_MSJ_INGRESE_GENERO "\nIngrese Genero: \0"
-#define PELICULA_MSJ_REINGRESE_GENERO "\nGenero muy largo. Reingrese por favor: \0"
-#define PELICULA_MSJ_INGRESE_DESCRIPCION "\nIngrese Descripcion: \0"
-#define PELICULA_MSJ_REINGRESE_DESCRIPCION "\nDescripcion muy larga. Reingrese por favor: \0"
-#define PELICULA_MSJ_INGRESE_DURACION "\nIngrese Duracion: \0"
-#define PELICULA_MSJ_REINGRESE_DURACION "\nDuracion no valida. Reingrese por favor: \0"
-#define PELICULA_MSJ_INGRESE_PUNTAJE "\nIngrese Puntaje: \0"
-#define PELICULA_MSJ_REINGRESE_PUNTAJE "\nPuntaje no valido. Reingrese por favor: \0"
-#define PELICULA_MSJ_INGRESE_LINK "\nIngrese Link a imagen: \0"
-#define PELICULA_MSJ_REINGRESE_LINK "\nLink a imagen no valido. Reingrese por favor: \0"
+#define PELICULA_MSJ_INGRESE_ID "\n\nIngrese el ID de Pelicula: "
+#define PELICULA_MSJ_INGRESE_TITULO "\nIngrese Titulo Pelicula: "
+#define PELICULA_MSJ_INGRESE_GENERO "\nIngrese Genero: "
+#define PELICULA_MSJ_INGRESE_DESCRIPCION "\nIngrese Descripcion: "
+#define PELICULA_MSJ_INGRESE_DURACION "\nIngrese Duracion en minutos: "
+#define PELICULA_MSJ_INGRESE_PUNTAJE "\nIngrese Puntaje entre 1 y 100: "
+#define PELICULA_MSJ_INGRESE_LINK "\nIngrese Link a imagen: "
 
 //LISTADOS
-#define PELICULA_MOSTRAR_UNO_MASCARA DEFINIR_MACRO_STRING(\n%d - %-10s - %-10s - %-10d - %-10d - %-10s)
-#define PELICULA_MOSTRAR_UNO_CABECERA "\nID - TITULO - GENERO - PUNTAJE - DURACION - DESCRIPCION"
+#define PELICULA_MOSTRAR_UNO_CABECERA "\nID \t- TITULO \t\t- GENERO \t\t- PUNTAJE - DURACION"
+#define PELICULA_MOSTRAR_UNO_MASCARA DEFINIR_MACRO_STRING(\n%d \t- %-20s \t- %-20s \t- %-7d - %d min)
+#define PELICULA_MOSTRAR_UNO_COMPLETO_MASCARA DEFINIR_MACRO_STRING(\n- ID:%d \n- TITULO: %-20s \n- GENERO: %-20s \n- PUNTAJE: %d \n- DURACION: %d min \n- DESCRIPCION: %s \n- LINK A IMAGEN: %s\n)
+//#define PELICULA_MOSTRAR_UNO_CABECERA ""
 
 //ORDEN
-#define PELICULA_ORDEN_TITULO "nombreAsc"
-#define PELICULA_ORDEN_ID "idAsc"
+#define PELICULA_ORDEN_TITULO "titulo"
+#define PELICULA_ORDEN_TITULO_DESC "tituloDescendente"
+#define PELICULA_ORDEN_ID "id"
+#define PELICULA_ORDEN_ID_DESC "idDescendente"
 
 //MENUS
 #define PELICULA_MENU_MODIFICAR_UNO_TITULO "Que desea modificar?"
-#define PELICULA_MENU_MODIFICAR_UNO_CANT 6
+#define PELICULA_MENU_MODIFICAR_UNO_CANT 8
 #define PELICULA_MENU_MODIFICAR_UNO_DETALLE1 "1. Titulo"
 #define PELICULA_MENU_MODIFICAR_UNO_DETALLE2 "2. Genero"
 #define PELICULA_MENU_MODIFICAR_UNO_DETALLE3 "3. Duracion"
@@ -118,6 +117,7 @@ eMovie eMovie_pedirIngreso(eMovie* listadoPeliculas, int limitePeliculas);
 
 //listado
 int eMovie_mostrarUno(eMovie* pelicula);
+int eMovie_mostrarUnoCompleto(eMovie* pelicula);
 int eMovie_mostrarListado(eMovie* listadoPeliculas, int limitePeliculas);
 
 //gestion
