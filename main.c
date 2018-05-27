@@ -3,6 +3,7 @@
 #include "General.h"
 #include "Menu.h"
 #include "Pelicula.h"
+#include "Archivo.h"
 
 #define MENU_MAIN_TITULO "TP3 MARIANO PONTI"
 #define MENU_MAIN_CANT 6
@@ -24,15 +25,14 @@ int main()
 
     //ARRAYS DE ESTRUCTURAS
     eMovie listadoPeliculas[PELICULA_CANT_MAX] = {};
-    //eHijo listadoHijos[HIJO_CANT_MAX] = {};
+    eHtml plantillaWeb;
 
     //INCIALIZAR
-    //eMovie_init(listadoPeliculas, PELICULA_CANT_MAX);
-    //eHijo_init(listadoHijos, HIJO_CANT_MAX);
+    eMovie_init(listadoPeliculas, PELICULA_CANT_MAX);
+    eHtml_init(&plantillaWeb);
 
     //CARGAR DATOS POR HARDCODE PARA DEBUG
     eMovie_initHardcode(listadoPeliculas);
-    //eHijo_initHardcode(listadoHijos);
 
     do
     {

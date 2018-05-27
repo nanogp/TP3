@@ -1,33 +1,24 @@
 #pragma once
 #ifndef ARCHIVO_H_INCLUDED
 #define ARCHIVO_H_INCLUDED
+#include "Pelicula.h"
 
-#define ARCHIVO_HTML_INI "<!DOCTYPE html>
-<!-- Template by Quackit.com -->
-<html lang='en'>
-<head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Lista peliculas</title>
-    <!-- Bootstrap Core CSS -->
-    <link href='css/bootstrap.min.css' rel='stylesheet'>
-    <!-- Custom CSS: You can use this stylesheet to override any Bootstrap styles and/or apply your own styles -->
-    <link href='css/custom.css' rel='stylesheet'>
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js'></script>
-        <script src='https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js'></script>
-    <![endif]-->
-</head>
-<body>
-    <div class='container'>
-        <div class='row'>
+//constantes
+#define ARCHIVO_LECTURA "r"
+#define ARCHIVO_LECTURA_BINARIO "rb"
+#define ARCHIVO_ESCRITURA "w"
+#define ARCHIVO_ESCRITURA_BINARIO "wb"
 
+typedef struct
+{
+    int cantLineasIni;//13
+    int cantLineasPelicula;//14
+    int cantLineasFin;//8
+    char codigoFuente[1000*PELICULA_CANT_MAX];
+    char inicioDePagina[500];
+    char finDePagina[300];
+}eHtml;
 
-			<!-- Repetir esto para cada pelicula -->
-"
+void eHtml_init(eHtml* plantillaWeb);
 
 #endif // ARCHIVO_H_INCLUDED
