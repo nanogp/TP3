@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 
-void eHtml_init(eHtml* plantillaWeb)
+void eHtml_init(eHtml* paginaWeb)
 {
     char lineasInicio[13][100] = {{"<!DOCTYPE html>\n"},
                                   {"<html lang='en'>\n"},
@@ -27,25 +27,86 @@ void eHtml_init(eHtml* plantillaWeb)
                               {"</body>\n"},
                               {"</html>\n"}};
 
-    plantillaWeb->cantLineasIni = 13;
-    plantillaWeb->cantLineasFin = 8;
-    plantillaWeb->cantLineasPelicula = 14;
+    paginaWeb->cantLineasIni = ARCHIVO_NRO_LINEAS_INI;
+    paginaWeb->cantLineasFin = ARCHIVO_NRO_LINEAS_FIN;
+    paginaWeb->cantLineasPelicula = ARCHIVO_NRO_LINEAS_PELICULA;
 
     //procedo a armar el inicio y fin de pagina para tenerlos listos
     //luego solo concateno las peliculas en medio
 
     //armo el inicio de pagina
-    for (int i=0; i<plantillaWeb->cantLineasIni; i++)
+    for (int i=0; i<paginaWeb->cantLineasIni; i++)
     {
-        strcat((char*)&plantillaWeb->inicioDePagina, (char*)(lineasInicio+i));
+        strcat((char*)&paginaWeb->inicioDePagina, (char*)(lineasInicio+i));
     }
 
     //armo el fin de pagina
-    for (int i=0; i<plantillaWeb->cantLineasFin; i++)
+    for (int i=0; i<paginaWeb->cantLineasFin; i++)
     {
-        strcat((char*)&plantillaWeb->finDePagina, (char*)(lineasFin+i));
+        strcat((char*)&paginaWeb->finDePagina, (char*)(lineasFin+i));
     }
 
-    printf("%s%s",plantillaWeb->inicioDePagina,plantillaWeb->finDePagina);
+    printf("%s%s",paginaWeb->inicioDePagina,paginaWeb->finDePagina);
     pausa();
+}
+
+int eHtml_generarCodigoHtmlPelicula(char* htmlPelicula, eMovie* pelicula)
+{
+    int retorno = -1;
+
+    if(pelicula != NULL)
+    {
+        retorno = 0;
+
+        //concateno lineas
+        strcat(htmlPelicula, "\n            <article class='col-md-4 article-intro'>");
+        strcat(htmlPelicula, "\n                <a href='#'>");
+        strcat(htmlPelicula, "\n                    <img class='img-responsive img-rounded' src='"); strcat(htmlPelicula, pelicula->linkImagen); strcat(htmlPelicula, "' alt=''>");
+        strcat(htmlPelicula, "\n                </a>");
+        strcat(htmlPelicula, "\n                <h3>");
+        strcat(htmlPelicula, "\n                    <a href='#'>"); strcat(htmlPelicula, pelicula->titulo); strcat(htmlPelicula, "</a>");
+        strcat(htmlPelicula, "\n                </h3>");
+        strcat(htmlPelicula, "\n				<ul>");
+        strcat(htmlPelicula, "\n					<li>Género:"); strcat(htmlPelicula, pelicula->genero); strcat(htmlPelicula, "</li>");
+        strcat(htmlPelicula, "\n					<li>Puntaje:"); strcat(htmlPelicula, (char*)pelicula->puntaje); strcat(htmlPelicula, "</li>");
+        strcat(htmlPelicula, "\n					<li>Duración:"); strcat(htmlPelicula, (char*)pelicula->duracion); strcat(htmlPelicula, "</li>");
+        strcat(htmlPelicula, "\n				</ul>");
+        strcat(htmlPelicula, "\n                <p>"); strcat(htmlPelicula, pelicula->descripcion); strcat(htmlPelicula, "</p>");
+        strcat(htmlPelicula, "\n            </article>");
+
+    }
+
+    return retorno;
+}
+
+int eHtml_generarWeb(eHtml* paginaWeb, eMovie* listadoPeliculas, int limitePeliculas)
+{
+    int retorno = -1;
+    int i;
+
+    if(paginaWeb != NULL && listadoPeliculas != NULL && limitePeliculas > 0)
+    {
+        retorno = 0;
+        limpiarPantallaYMostrarTitulo(ARCHIVO_GENERAR_WEB_TITULO);
+
+        if(eMovie_informarListadoVacio(listadoPeliculas, limitePeliculas) == 0)
+        {
+            //voy a armar el codigo fuente de la pagina
+            strcat(paginaWeb->codigoFuente, paginaWeb->inicioDePagina);
+
+            for(i=0 ; i<limitePeliculas ; i++)
+            {
+                if((listadoPeliculas+i)->estado == OCUPADO)
+                {
+                    eHtml_generarCodigoHtmlPelicula((char*)&(paginaWeb->codigoFuente), (listadoPeliculas+i));
+                }
+            }
+
+            strcat(paginaWeb->codigoFuente, paginaWeb->finDePagina);
+        }
+    }
+
+    printf("%s",paginaWeb->codigoFuente);
+    pausa();
+    return retorno;
 }

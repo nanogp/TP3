@@ -408,11 +408,7 @@ int eMovie_modificacion(eMovie* listadoPeliculas, int limitePeliculas)
 
     limpiarPantallaYMostrarTitulo(PELICULA_MODIFICACION_TITULO);
 
-    if(eMovie_estaVacio(listadoPeliculas, limitePeliculas) == 1)
-    {
-        imprimirEnPantalla(PELICULA_MSJ_LISTA_VACIA);
-    }
-    else
+    if(eMovie_informarListadoVacio(listadoPeliculas, limitePeliculas) == 0)
     {
         posicion = eMovie_pedirIdYBuscar(listadoPeliculas, limitePeliculas);
         //traigo el registro del id elegido para no pisar directo sobre el listadoPeliculas
@@ -469,11 +465,7 @@ int eMovie_baja(eMovie* listadoPeliculas, int limitePeliculas)
 
     limpiarPantallaYMostrarTitulo(PELICULA_BAJA_TITULO);
 
-    if(eMovie_estaVacio(listadoPeliculas, limitePeliculas) == 1)
-    {
-        imprimirEnPantalla(PELICULA_MSJ_LISTA_VACIA);
-    }
-    else
+    if(eMovie_informarListadoVacio(listadoPeliculas, limitePeliculas) == 0)
     {
         limpiarPantallaYMostrarTitulo(PELICULA_BAJA_TITULO);
 

@@ -25,11 +25,11 @@ int main()
 
     //ARRAYS DE ESTRUCTURAS
     eMovie listadoPeliculas[PELICULA_CANT_MAX] = {};
-    eHtml plantillaWeb;
+    eHtml paginaWeb;
 
     //INCIALIZAR
     eMovie_init(listadoPeliculas, PELICULA_CANT_MAX);
-    eHtml_init(&plantillaWeb);
+    eHtml_init(&paginaWeb);
 
     //CARGAR DATOS POR HARDCODE PARA DEBUG
     eMovie_initHardcode(listadoPeliculas);
@@ -50,7 +50,7 @@ int main()
                 eMovie_modificacion(listadoPeliculas, PELICULA_CANT_MAX);
                 break;
             case 4:
-                imprimirTitulo(menuPrincipal.descripciones[opcion-1]);pausa();
+                eHtml_generarWeb(&paginaWeb, listadoPeliculas, PELICULA_CANT_MAX);
                 break;
             case 5:
                 eMovie_mostrarListado(listadoPeliculas, PELICULA_CANT_MAX);pausa();

@@ -45,8 +45,8 @@
 #define PELICULA_MSJ_BAJA_OK "\nLa Pelicula se dio de baja"
 #define PELICULA_MSJ_MODIFICACION_SIN_CAMBIOS "\nNo hubo cambio alguno"
 #define PELICULA_MSJ_MODIFICACION_OK "\nLa Pelicula se modifico"
-#define PELICULA_MSJ_REGISTRO_ACTUAL "\n\nREGISTRO DE PELICULA ACTUAL:\n闡闡闡闡闡闡闡闡闡闡闡闡闡闡"
-#define PELICULA_MSJ_REGISTRO_MODIFICADO "\n\nRegistro modificado:\n闡闡闡闡闡闡闡闡闡闡"
+#define PELICULA_MSJ_REGISTRO_ACTUAL "\n\nREGISTRO DE PELICULA ACTUAL:\n儢渥輕儢渥輕儢渥輕儢渥輕儢渥輕儢渥輕儢渥輕"
+#define PELICULA_MSJ_REGISTRO_MODIFICADO "\n\nRegistro modificado:\n儢渥輕儢渥輕儢渥輕儢渥輕儢渥輕"
 
 //MENSAJES INPUT
 #define PELICULA_MSJ_INGRESE_ID "\n\nIngrese el ID de Pelicula: "
