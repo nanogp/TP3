@@ -200,3 +200,27 @@ void saltoDeLinea()
 {
     imprimirEnPantalla("\n");
 }
+
+char* intToChar(int numero)
+{
+    char cadena[STRING_LARGO_MAX];
+    char* retorno;
+
+    retorno = cadena;
+
+    sprintf(retorno, "%d", numero);
+
+    return retorno;
+}
+
+char* floatToChar(float numero)
+{
+    char cadena[STRING_LARGO_MAX];
+    char* retorno;
+
+    retorno = cadena;
+
+    sprintf(retorno, "%.2f", numero);
+
+    return retorno;
+}

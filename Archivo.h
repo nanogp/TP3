@@ -40,5 +40,6 @@ typedef struct
 }eHtml;
 
 void eHtml_init(eHtml* plantillaWeb);
+int eHtml_generarCodigoHtmlPelicula(char* htmlPelicula, eMovie* pelicula);
 int eHtml_generarWeb(eHtml* paginaWeb, eMovie* listadoPeliculas, int limitePeliculas);
 #endif // ARCHIVO_H_INCLUDED

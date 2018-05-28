@@ -194,4 +194,20 @@ void limpiarPantallaYMostrarTitulo(char*);
  */
 void saltoDeLinea();
 
+/** \brief convierte un entero en texto
+ *
+ * \param numero int el numero entero
+ * \return char* texto
+ *
+ */
+char* intToChar(int numero);
+
+/** \brief convierte un flotante en texto
+ *
+ * \param numero float el numero flotante
+ * \return char* texto
+ *
+ */
+char* floatToChar(float numero);
+
 #endif // GENERAL_H_INCLUDED

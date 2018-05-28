@@ -46,8 +46,6 @@ void eHtml_init(eHtml* paginaWeb)
         strcat((char*)&paginaWeb->finDePagina, (char*)(lineasFin+i));
     }
 
-    printf("%s%s",paginaWeb->inicioDePagina,paginaWeb->finDePagina);
-    pausa();
 }
 
 int eHtml_generarCodigoHtmlPelicula(char* htmlPelicula, eMovie* pelicula)
@@ -61,17 +59,29 @@ int eHtml_generarCodigoHtmlPelicula(char* htmlPelicula, eMovie* pelicula)
         //concateno lineas
         strcat(htmlPelicula, "\n            <article class='col-md-4 article-intro'>");
         strcat(htmlPelicula, "\n                <a href='#'>");
-        strcat(htmlPelicula, "\n                    <img class='img-responsive img-rounded' src='"); strcat(htmlPelicula, pelicula->linkImagen); strcat(htmlPelicula, "' alt=''>");
+        strcat(htmlPelicula, "\n                    <img class='img-responsive img-rounded' src='");
+        strcat(htmlPelicula, (char*)&(pelicula->linkImagen));
+        strcat(htmlPelicula, "' alt=''>");
         strcat(htmlPelicula, "\n                </a>");
         strcat(htmlPelicula, "\n                <h3>");
-        strcat(htmlPelicula, "\n                    <a href='#'>"); strcat(htmlPelicula, pelicula->titulo); strcat(htmlPelicula, "</a>");
+        strcat(htmlPelicula, "\n                    <a href='#'>");
+        strcat(htmlPelicula, (char*)&(pelicula->titulo));
+        strcat(htmlPelicula, "</a>");
         strcat(htmlPelicula, "\n                </h3>");
         strcat(htmlPelicula, "\n				<ul>");
-        strcat(htmlPelicula, "\n					<li>Género:"); strcat(htmlPelicula, pelicula->genero); strcat(htmlPelicula, "</li>");
-        strcat(htmlPelicula, "\n					<li>Puntaje:"); strcat(htmlPelicula, (char*)pelicula->puntaje); strcat(htmlPelicula, "</li>");
-        strcat(htmlPelicula, "\n					<li>Duración:"); strcat(htmlPelicula, (char*)pelicula->duracion); strcat(htmlPelicula, "</li>");
+        strcat(htmlPelicula, "\n					<li>Género:");
+        strcat(htmlPelicula, (char*)&(pelicula->genero));
+        strcat(htmlPelicula, "</li>");
+        strcat(htmlPelicula, "\n					<li>Puntaje:");
+        strcat(htmlPelicula, intToChar(pelicula->puntaje));
+        strcat(htmlPelicula, "</li>");
+        strcat(htmlPelicula, "\n					<li>Duración:");
+        strcat(htmlPelicula, intToChar(pelicula->duracion));
+        strcat(htmlPelicula, "</li>");
         strcat(htmlPelicula, "\n				</ul>");
-        strcat(htmlPelicula, "\n                <p>"); strcat(htmlPelicula, pelicula->descripcion); strcat(htmlPelicula, "</p>");
+        strcat(htmlPelicula, "\n                <p>");
+        strcat(htmlPelicula, (char*)&(pelicula->descripcion));
+        strcat(htmlPelicula, "</p>");
         strcat(htmlPelicula, "\n            </article>");
 
     }
