@@ -10,6 +10,8 @@
 #define ARCHIVO_LECTURA_BINARIO "rb"
 #define ARCHIVO_ESCRITURA "w"
 #define ARCHIVO_ESCRITURA_BINARIO "wb"
+#define ARCHIVO_RUTA_BINARIO "Listado Peliculas.dat"
+#define ARCHIVO_RUTA_HTML "index.html"
 #define ARCHIVO_NRO_LINEAS_INI 13
 #define ARCHIVO_NRO_LINEAS_FIN 8
 #define ARCHIVO_NRO_LINEAS_PELICULA 14
@@ -20,6 +22,7 @@
 //MENSAJES ERROR
 
 //MENSAJES INFO
+#define ARCHIVO_MSJ_HTML_OK "\n\nSe gener¢ el archivo html para la pagina web\n"
 
 //MENSAJES INPUT
 
@@ -42,4 +45,6 @@ typedef struct
 void eHtml_init(eHtml* plantillaWeb);
 int eHtml_generarCodigoHtmlPelicula(char* htmlPelicula, eMovie* pelicula);
 int eHtml_generarWeb(eHtml* paginaWeb, eMovie* listadoPeliculas, int limitePeliculas);
+int eArchivo_leer(char* rutaArchivo, eMovie* listadoPeliculas, int limitePeliculas);
+int eArchivo_escribir(char* rutaArchivo, eMovie* listadoPeliculas, int limitePeliculas);
 #endif // ARCHIVO_H_INCLUDED

@@ -31,7 +31,7 @@ int main()
     eMovie_init(listadoPeliculas, PELICULA_CANT_MAX);
     eHtml_init(&paginaWeb);
 
-    //CARGAR DATOS POR HARDCODE PARA DEBUG
+    //GENERAR DATOS POR HARDCODE PARA DEBUG
     eMovie_initHardcode(listadoPeliculas);
 
     do

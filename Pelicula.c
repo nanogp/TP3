@@ -6,6 +6,7 @@
 
 void eMovie_initHardcode(eMovie* listadoPeliculas)
 {
+    //genero datos de prueba
     char titulos[3][50] = {{"Back to the future"},{"The Godfather"},{"Forrest Gump"}};
     char generos[3][50] = {{"Aventura"},{"Crime, Drama"},{"Drama, Romance"}};
     int puntajes[3] = {86,92,88};
@@ -19,6 +20,7 @@ void eMovie_initHardcode(eMovie* listadoPeliculas)
                                   {"https://ia.media-imdb.com/images/M/MV5BNWIwODRlZTUtY2U3ZS00Yzg1LWJhNzYtMmZiYmEyNmU1NjMzXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_UY268_CR1,0,182,268_AL_.jpg"}
                                   };
 
+    //asigno datos al listado
     for(int i = 0; i<3 ; i++)
     {
         strcpy((char*)&((listadoPeliculas+i)->titulo), (char*)(titulos+i));
@@ -30,8 +32,9 @@ void eMovie_initHardcode(eMovie* listadoPeliculas)
         (listadoPeliculas+i)->idPelicula = i+1;
         (listadoPeliculas+i)->estado = OCUPADO;
     }
-    eMovie_ordenar(listadoPeliculas, PELICULA_CANT_MAX, PELICULA_ORDEN_TITULO);
 
+    //ordeno por titulo
+    eMovie_ordenar(listadoPeliculas, PELICULA_CANT_MAX, PELICULA_ORDEN_TITULO);
 }
 
 int eMovie_init(eMovie* listadoPeliculas, int limitePeliculas)
@@ -166,6 +169,22 @@ int eMovie_pedirIdYBuscar(eMovie* listadoPeliculas, int limitePeliculas)
         }
     }
     while(retorno < 0);
+
+    return retorno;
+}
+
+int eMovie_obtenerCantidadElementos(eMovie* listadoPeliculas, int limitePeliculas)
+{
+    int retorno = 0;
+    int i;
+
+    for(i=0 ; i<limitePeliculas ; i++)
+    {
+        if((listadoPeliculas+i)->estado == OCUPADO)
+        {
+            retorno++;
+        }
+    }
 
     return retorno;
 }

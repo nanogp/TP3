@@ -104,6 +104,7 @@ int eMovie_estaVacio(eMovie* listadoPeliculas, int limitePeliculas);
 int eMovie_informarListadoVacio(eMovie* listadoPeliculas, int limitePeliculas);
 int eMovie_buscarPorId(eMovie* listadoPeliculas, int limitePeliculas, int idPelicula);
 int eMovie_pedirIdYBuscar(eMovie* listadoPeliculas, int limitePeliculas);
+int eMovie_obtenerCantidadElementos(eMovie* listadoPeliculas, int limitePeliculas);
 
 //input
 int eMovie_pedirId();

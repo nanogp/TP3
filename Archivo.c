@@ -48,6 +48,7 @@ void eHtml_init(eHtml* paginaWeb)
 
 }
 
+
 int eHtml_generarCodigoHtmlPelicula(char* htmlPelicula, eMovie* pelicula)
 {
     int retorno = -1;
@@ -69,13 +70,13 @@ int eHtml_generarCodigoHtmlPelicula(char* htmlPelicula, eMovie* pelicula)
         strcat(htmlPelicula, "</a>");
         strcat(htmlPelicula, "\n                </h3>");
         strcat(htmlPelicula, "\n				<ul>");
-        strcat(htmlPelicula, "\n					<li>Género:");
+        strcat(htmlPelicula, "\n					<li>Genero:");
         strcat(htmlPelicula, (char*)&(pelicula->genero));
         strcat(htmlPelicula, "</li>");
         strcat(htmlPelicula, "\n					<li>Puntaje:");
         strcat(htmlPelicula, intToChar(pelicula->puntaje));
         strcat(htmlPelicula, "</li>");
-        strcat(htmlPelicula, "\n					<li>Duración:");
+        strcat(htmlPelicula, "\n					<li>Duracion:");
         strcat(htmlPelicula, intToChar(pelicula->duracion));
         strcat(htmlPelicula, "</li>");
         strcat(htmlPelicula, "\n				</ul>");
@@ -89,10 +90,31 @@ int eHtml_generarCodigoHtmlPelicula(char* htmlPelicula, eMovie* pelicula)
     return retorno;
 }
 
+
+int eHtml_escribirArchivoHtml(char* codigoFuente)
+{
+    int retorno = -1;
+    FILE* pArchivo;
+
+    pArchivo = fopen(ARCHIVO_RUTA_HTML, ARCHIVO_ESCRITURA);
+
+    if(pArchivo != NULL)
+    {
+        retorno = 0;
+
+        fprintf(pArchivo,"%s",codigoFuente);
+        fclose(pArchivo);
+    }
+
+    return retorno;
+}
+
+
 int eHtml_generarWeb(eHtml* paginaWeb, eMovie* listadoPeliculas, int limitePeliculas)
 {
     int retorno = -1;
     int i;
+    char* pCodigoFuente = paginaWeb->codigoFuente;
 
     if(paginaWeb != NULL && listadoPeliculas != NULL && limitePeliculas > 0)
     {
@@ -108,15 +130,89 @@ int eHtml_generarWeb(eHtml* paginaWeb, eMovie* listadoPeliculas, int limitePelic
             {
                 if((listadoPeliculas+i)->estado == OCUPADO)
                 {
-                    eHtml_generarCodigoHtmlPelicula((char*)&(paginaWeb->codigoFuente), (listadoPeliculas+i));
+                    //eHtml_generarCodigoHtmlPelicula((char*)&(paginaWeb->codigoFuente), (listadoPeliculas+i));
+                    eHtml_generarCodigoHtmlPelicula(pCodigoFuente, (listadoPeliculas+i));
                 }
             }
 
+            //agrego codigo html de la pelicula al codigo fuente de la web
             strcat(paginaWeb->codigoFuente, paginaWeb->finDePagina);
         }
     }
 
-    printf("%s",paginaWeb->codigoFuente);
+    //llamo a escribir el archivo en disco con el codigo generado
+    eHtml_escribirArchivoHtml(paginaWeb->codigoFuente);
+
+    imprimirEnPantalla(ARCHIVO_MSJ_HTML_OK);
     pausa();
+
+    return retorno;
+}
+
+
+int eArchivo_leer(char* rutaArchivo, eMovie* listadoPeliculas, int limitePeliculas)
+{
+    int retorno = -1; //error en listadoPeliculas
+    int cantidadDeRegistros;
+    FILE* pArchivo;
+
+    if(listadoPeliculas != NULL && limitePeliculas > 0)
+    {
+        retorno = -2; //error en archivo
+
+        pArchivo = fopen(rutaArchivo, ARCHIVO_LECTURA_BINARIO);
+
+        if(pArchivo != NULL)
+        {
+            retorno = -3; //error en carga de array
+
+            fread(&cantidadDeRegistros, sizeof(int), 1, pArchivo);
+
+            if(cantidadDeRegistros > 0)
+            {
+                fread(listadoPeliculas, sizeof(eMovie), cantidadDeRegistros, pArchivo);
+                retorno = 0;
+            }
+        }
+
+        fclose(pArchivo);
+    }
+
+    return retorno;
+}
+
+
+int eArchivo_escribir(char* rutaArchivo, eMovie* listadoPeliculas, int limitePeliculas)
+{
+    int retorno = -1; //error en listadoPeliculas
+    int cantidadDeRegistros;
+    int i;
+    FILE* pArchivo;
+
+    if(listadoPeliculas != NULL && limitePeliculas > 0)
+    {
+        retorno = -2; //error en archivo
+
+        pArchivo = fopen(rutaArchivo, ARCHIVO_ESCRITURA_BINARIO);
+
+        if(pArchivo != NULL)
+        {
+            retorno = -3; //error en carga de array
+
+            cantidadDeRegistros = eMovie_obtenerCantidadElementos(listadoPeliculas, limitePeliculas);
+            fwrite(&cantidadDeRegistros, sizeof(int), 1, pArchivo); //guardo cantidad de registros
+
+            for(i=0 ; i<limitePeliculas ; i++)
+            {
+                if((listadoPeliculas+i)->estado == OCUPADO)
+                {
+                    fwrite((listadoPeliculas+i), sizeof(eMovie), 1, pArchivo);
+                }
+            }
+        }
+
+        fclose(pArchivo);
+    }
+
     return retorno;
 }
