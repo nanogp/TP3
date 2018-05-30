@@ -6,12 +6,12 @@
 //LIMITES
 
 //CONSTANTES
-#define ARCHIVO_LECTURA "r"
-#define ARCHIVO_LECTURA_BINARIO "rb"
-#define ARCHIVO_ESCRITURA "w"
-#define ARCHIVO_ESCRITURA_BINARIO "wb"
-#define ARCHIVO_RUTA_BINARIO "Listado Peliculas.dat"
-#define ARCHIVO_RUTA_HTML "index.html"
+#define ARCHIVO_HTML_RUTA "index.html"
+#define ARCHIVO_BINARIO_RUTA "Listado_Peliculas.dat"
+#define ARCHIVO_HTML_LECTURA "r"
+#define ARCHIVO_BINARIO_LECTURA "rb"
+#define ARCHIVO_HTML_ESCRITURA "w"
+#define ARCHIVO_BINARIO_ESCRITURA "wb"
 #define ARCHIVO_NRO_LINEAS_INI 13
 #define ARCHIVO_NRO_LINEAS_FIN 8
 #define ARCHIVO_NRO_LINEAS_PELICULA 14
@@ -22,7 +22,7 @@
 //MENSAJES ERROR
 
 //MENSAJES INFO
-#define ARCHIVO_MSJ_HTML_OK "\n\nSe gener¢ el archivo html para la pagina web\n"
+#define ARCHIVO_MSJ_HTML_OK "\n\nSe gener¢ la p gina web en el archivo: "
 
 //MENSAJES INPUT
 
@@ -40,11 +40,13 @@ typedef struct
     char codigoFuente[1000*PELICULA_CANT_MAX];
     char inicioDePagina[500];
     char finDePagina[300];
-}eHtml;
+}eArchivoHtml;
 
-void eHtml_init(eHtml* plantillaWeb);
-int eHtml_generarCodigoHtmlPelicula(char* htmlPelicula, eMovie* pelicula);
-int eHtml_generarWeb(eHtml* paginaWeb, eMovie* listadoPeliculas, int limitePeliculas);
-int eArchivo_leer(char* rutaArchivo, eMovie* listadoPeliculas, int limitePeliculas);
-int eArchivo_escribir(char* rutaArchivo, eMovie* listadoPeliculas, int limitePeliculas);
+void eArchivoBinario_initHardcode(eMovie* listadoPeliculas);
+void eArchivoHtml_init(eArchivoHtml* plantillaWeb);
+int eArchivoHtml_generarCodigoHtmlPelicula(char* htmlPelicula, eMovie* pelicula);
+int eArchivoHtml_escribirArchivoHtml(char* codigoFuente);
+int eArchivoHtml_generarWeb(eArchivoHtml* paginaWeb, eMovie* listadoPeliculas, int limitePeliculas);
+int eArchivoBinario_leer(char* rutaArchivo, eMovie* listadoPeliculas, int limitePeliculas);
+int eArchivoBinario_escribir(char* rutaArchivo, eMovie* listadoPeliculas, int limitePeliculas);
 #endif // ARCHIVO_H_INCLUDED

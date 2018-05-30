@@ -25,6 +25,7 @@
 #define MSJ_CANCELO_GESTION "\nSe cancelo la gestion"
 #define MSJ_MODIFICANDO_REGISTRO "MODIFICANDO REGISTRO"
 #define MSJ_DATOS_A_MODIFICAR "\nDatos a modificar:\n"
+#define MSJ_SALIR_DEL_PROGRAMA "Confirma que desea salir del programa?"
 
 //listados
 

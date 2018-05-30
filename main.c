@@ -25,14 +25,15 @@ int main()
 
     //ARRAYS DE ESTRUCTURAS
     eMovie listadoPeliculas[PELICULA_CANT_MAX] = {};
-    eHtml paginaWeb;
+    eArchivoHtml paginaWeb;
 
     //INCIALIZAR
     eMovie_init(listadoPeliculas, PELICULA_CANT_MAX);
-    eHtml_init(&paginaWeb);
+    eArchivoBinario_leer(ARCHIVO_BINARIO_RUTA, listadoPeliculas, PELICULA_CANT_MAX);
+    eArchivoHtml_init(&paginaWeb);
 
     //GENERAR DATOS POR HARDCODE PARA DEBUG
-    eMovie_initHardcode(listadoPeliculas);
+    eArchivoBinario_initHardcode(listadoPeliculas);
 
     do
     {
@@ -42,21 +43,24 @@ int main()
         {
             case 1:
                 eMovie_alta(listadoPeliculas, PELICULA_CANT_MAX);
+                eArchivoBinario_escribir(ARCHIVO_BINARIO_RUTA, listadoPeliculas, PELICULA_CANT_MAX);
                 break;
             case 2:
                 eMovie_baja(listadoPeliculas, PELICULA_CANT_MAX);
+                eArchivoBinario_escribir(ARCHIVO_BINARIO_RUTA, listadoPeliculas, PELICULA_CANT_MAX);
                 break;
             case 3:
                 eMovie_modificacion(listadoPeliculas, PELICULA_CANT_MAX);
+                eArchivoBinario_escribir(ARCHIVO_BINARIO_RUTA, listadoPeliculas, PELICULA_CANT_MAX);
                 break;
             case 4:
-                eHtml_generarWeb(&paginaWeb, listadoPeliculas, PELICULA_CANT_MAX);
+                eArchivoHtml_generarWeb(&paginaWeb, listadoPeliculas, PELICULA_CANT_MAX);
                 break;
             case 5:
                 eMovie_mostrarListado(listadoPeliculas, PELICULA_CANT_MAX);pausa();
                 break;
             case 0:
-                salirDelPrograma = pedirConfirmacion("Confirma que desea salir del programa?");
+                salirDelPrograma = pedirConfirmacion(MSJ_SALIR_DEL_PROGRAMA);
                 break;
         }
 

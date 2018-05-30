@@ -409,6 +409,7 @@ int eMovie_modificarUno(eMovie* registro)
                     break;
                 case 0:
                     finalizar = 'S';
+                    huboCambios = 0;
                     retorno = huboCambios;
                     break;
             }
