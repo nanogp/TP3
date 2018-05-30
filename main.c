@@ -34,7 +34,6 @@ int main()
     /************************ INICIALIZACION *****************************************************/
     eMovie_init(listadoPeliculas, PELICULA_CANT_MAX);
     eArchivoBinario_leer(ARCHIVO_BINARIO_RUTA, listadoPeliculas, PELICULA_CANT_MAX);
-    eArchivoHtml_init(&paginaWeb);
 
     /************************ GENERAR DATOS POR HARDCODE PARA DEBUG ******************************/
     /************************ (SOLO SI EL ARCHIVO BINARIO NO EXISTE) *****************************/

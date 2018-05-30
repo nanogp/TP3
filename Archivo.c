@@ -62,6 +62,7 @@ void eArchivoHtml_init(eArchivoHtml* paginaWeb)
     paginaWeb->cantLineasIni = ARCHIVO_NRO_LINEAS_INI;
     paginaWeb->cantLineasFin = ARCHIVO_NRO_LINEAS_FIN;
     paginaWeb->cantLineasPelicula = ARCHIVO_NRO_LINEAS_PELICULA;
+    strcpy(paginaWeb->codigoFuente, "");
 
     //procedo a armar el inicio y fin de pagina para tenerlos listos
     //luego solo concateno las peliculas en medio
@@ -155,6 +156,8 @@ int eArchivoHtml_generarWeb(eArchivoHtml* paginaWeb, eMovie* listadoPeliculas, i
 
         if(eMovie_informarListadoVacio(listadoPeliculas, limitePeliculas) == 0)
         {
+            eArchivoHtml_init(paginaWeb);
+
             //voy a armar el codigo fuente de la pagina
             strcat(paginaWeb->codigoFuente, paginaWeb->inicioDePagina);
 

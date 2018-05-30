@@ -45,7 +45,7 @@
 #define PELICULA_MSJ_MODIFICACION_SIN_CAMBIOS "\nNo hubo cambio alguno"
 #define PELICULA_MSJ_MODIFICACION_OK "\nLa Pelicula se modifico"
 #define PELICULA_MSJ_REGISTRO_ACTUAL "\n\nREGISTRO DE PELICULA ACTUAL:\n컴컴컴컴컴컴컴컴컴컴컴컴컴컴"
-#define PELICULA_MSJ_REGISTRO_MODIFICADO "\n\nRegistro modificado:\n컴컴컴컴컴컴컴컴컴컴"
+#define PELICULA_MSJ_REGISTRO_MODIFICADO "\n\nREGISTRO MODIFICADO:\n컴컴컴컴컴컴컴컴컴컴"
 
 /**************************** MENSAJES INPUT *****************************************************/
 #define PELICULA_MSJ_INGRESE_ID "\n\nIngrese el ID de Pelicula: "
