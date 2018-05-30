@@ -1,10 +1,14 @@
-#include <stdio.h>
-#include <stdlib.h>
+/**************************** INCLUSION DE LIBRERIAS PERSONALES **********************************/
 #include "General.h"
 #include "Menu.h"
 #include "Pelicula.h"
 #include "Archivo.h"
 
+/**************************** INCLUSION DE LIBRERIAS ESTANDAR ************************************/
+#include <stdio.h>
+#include <stdlib.h>
+
+/**************************** MENUS **************************************************************/
 #define MENU_MAIN_TITULO "TP3 MARIANO PONTI"
 #define MENU_MAIN_CANT 6
 #define MENU_MAIN_DETALLE1  "1. Agregar pelicula"
@@ -23,43 +27,48 @@ int main()
     int opcion;
     char salirDelPrograma = 'N';
 
-    //ARRAYS DE ESTRUCTURAS
+
+    /************************ ARRAYS DE ESTRUCTURAS **********************************************/
     eMovie listadoPeliculas[PELICULA_CANT_MAX] = {};
     eArchivoHtml paginaWeb;
 
-    //INCIALIZAR
+    /************************ INICIALIZACION *****************************************************/
     eMovie_init(listadoPeliculas, PELICULA_CANT_MAX);
     eArchivoBinario_leer(ARCHIVO_BINARIO_RUTA, listadoPeliculas, PELICULA_CANT_MAX);
     eArchivoHtml_init(&paginaWeb);
 
-    //GENERAR DATOS POR HARDCODE PARA DEBUG
+    /************************ GENERAR DATOS POR HARDCODE PARA DEBUG ******************************/
+    /************************ (SOLO SI EL ARCHIVO BINARIO NO EXISTE) *****************************/
     eArchivoBinario_initHardcode(listadoPeliculas);
 
     do
     {
+        /******************** MENU PRINCIPAL *****************************************************/
         ejecutarEnConsola(LIMPIAR_PANTALLA);
         opcion = pedirOpcion(&menuPrincipal);
         switch(opcion)
         {
             case 1:
+                /************ ALTA ***************************************************************/
                 eMovie_alta(listadoPeliculas, PELICULA_CANT_MAX);
                 eArchivoBinario_escribir(ARCHIVO_BINARIO_RUTA, listadoPeliculas, PELICULA_CANT_MAX);
                 break;
             case 2:
+                /************ BAJA ***************************************************************/
                 eMovie_baja(listadoPeliculas, PELICULA_CANT_MAX);
                 eArchivoBinario_escribir(ARCHIVO_BINARIO_RUTA, listadoPeliculas, PELICULA_CANT_MAX);
                 break;
             case 3:
+                /************ MODIFICACION *******************************************************/
                 eMovie_modificacion(listadoPeliculas, PELICULA_CANT_MAX);
                 eArchivoBinario_escribir(ARCHIVO_BINARIO_RUTA, listadoPeliculas, PELICULA_CANT_MAX);
                 break;
             case 4:
+                /************ LISTADO WEB ********************************************************/
                 eArchivoHtml_generarWeb(&paginaWeb, listadoPeliculas, PELICULA_CANT_MAX);
                 break;
-            case 5:
-                eMovie_mostrarListado(listadoPeliculas, PELICULA_CANT_MAX);pausa();
-                break;
             case 0:
+                /************ SALIR DEL PROGRAMA *************************************************/
                 salirDelPrograma = pedirConfirmacion(MSJ_SALIR_DEL_PROGRAMA);
                 break;
         }

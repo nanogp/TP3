@@ -1,14 +1,33 @@
+/**************************** INCLUSION DE LIBRERIAS PERSONALES **********************************/
 #include "General.h"
+
+/**************************** INCLUSION DE LIBRERIAS ESTANDAR ************************************/
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-void ejecutarEnConsola(char* lineaDeComando)
-{
-    printf("\n");
-    system(lineaDeComando);
-}
 
+/**************************** BUSQUEDA ***********************************************************/
+int buscarEnArrayInt(int array[], int limite, int buscar)
+{
+    int retorno = -1;
+    int i;
+
+    for(i=0 ; i<limite ; i++)
+    {
+        if(array[i] == buscar)
+        {
+            retorno = i;
+            break;
+        }
+    }
+
+    return retorno;
+}
+//-----------------------------------------------------------------------------------------------//
+
+
+/**************************** ENTRADA DE DATOS ***************************************************/
 char pedirConfirmacion(char* mensajeAlUsuario)
 {
     char retorno;
@@ -40,6 +59,11 @@ char pedirConfirmacion(char* mensajeAlUsuario)
 
     return retorno;
 }
+//-----------------------------------------------------------------------------------------------//
+void pausa()
+{
+    ejecutarEnConsola(HACER_PAUSA);
+}
 
 int pedirInt(char* mensajeIngreso)
 {
@@ -52,7 +76,7 @@ int pedirInt(char* mensajeIngreso)
 
     return retorno;
 }
-
+//-----------------------------------------------------------------------------------------------//
 int pedirIntValido(char* mensajeIngreso, char* mensajeReingreso, int limiteInferior, int limiteSuperior)
 {
     int retorno;
@@ -66,7 +90,7 @@ int pedirIntValido(char* mensajeIngreso, char* mensajeReingreso, int limiteInfer
 
     return retorno;
 }
-
+//-----------------------------------------------------------------------------------------------//
 float pedirFloat(char* mensajeIngreso)
 {
     float retorno;
@@ -78,7 +102,7 @@ float pedirFloat(char* mensajeIngreso)
 
     return retorno;
 }
-
+//-----------------------------------------------------------------------------------------------//
 float pedirFloatValido(char* mensajeIngreso, char* mensajeReingreso, float limiteInferior, float limiteSuperior)
 {
     float retorno;
@@ -92,14 +116,14 @@ float pedirFloatValido(char* mensajeIngreso, char* mensajeReingreso, float limit
 
     return retorno;
 }
-
+//-----------------------------------------------------------------------------------------------//
 void pedirString(char retorno[], char* mensajeIngreso)
 {
     printf("%s", mensajeIngreso);
     fflush(stdin);
     gets(retorno);
 }
-
+//-----------------------------------------------------------------------------------------------//
 void pedirStringValido(char retorno[], char* mensajeIngreso, char* mensajeReingreso, int limite)
 {
     char stringIngresado[STRING_LARGO_MAX];
@@ -114,38 +138,10 @@ void pedirStringValido(char retorno[], char* mensajeIngreso, char* mensajeReingr
 
     strcpy(retorno, stringIngresado);
 }
+//-----------------------------------------------------------------------------------------------//
 
-float calcularPromedio(float numero1, float numero2)
-{
-    float retorno;
 
-    retorno = (numero1 + numero2) / 2;
-
-    return retorno;
-}
-
-int buscarEnArrayInt(int array[], int limite, int buscar)
-{
-    int retorno = -1;
-    int i;
-
-    for(i=0 ; i<limite ; i++)
-    {
-        if(array[i] == buscar)
-        {
-            retorno = i;
-            break;
-        }
-    }
-
-    return retorno;
-}
-
-void imprimirEnPantalla(char texto[])
-{
-    printf("%s", texto);
-}
-
+/**************************** LISTADO DE DATOS ***************************************************/
 void generarTitulo(char texto[])
 {
     int i;
@@ -171,7 +167,12 @@ void generarTitulo(char texto[])
     strcat(texto, "¼");
 
 }
-
+//-----------------------------------------------------------------------------------------------//
+void imprimirEnPantalla(char texto[])
+{
+    printf("%s", texto);
+}
+//-----------------------------------------------------------------------------------------------//
 void imprimirTitulo(char texto[])
 {
     char titulo[TITULO_LARGO_MAX];
@@ -179,28 +180,32 @@ void imprimirTitulo(char texto[])
     generarTitulo(titulo);
     imprimirEnPantalla(titulo);
 }
-
+//-----------------------------------------------------------------------------------------------//
+void limpiarPantalla()
+{
+    ejecutarEnConsola(LIMPIAR_PANTALLA);
+}
+//-----------------------------------------------------------------------------------------------//
 void limpiarPantallaYMostrarTitulo(char texto[])
 {
     ejecutarEnConsola(LIMPIAR_PANTALLA);
     imprimirTitulo(texto);
 }
-
-void pausa()
-{
-    ejecutarEnConsola(HACER_PAUSA);
-}
-
-void limpiarPantalla()
-{
-    ejecutarEnConsola(LIMPIAR_PANTALLA);
-}
-
+//-----------------------------------------------------------------------------------------------//
 void saltoDeLinea()
 {
     imprimirEnPantalla("\n");
 }
+//-----------------------------------------------------------------------------------------------//
 
+
+/**************************** GESTION DE DATOS ***************************************************/
+void ejecutarEnConsola(char* lineaDeComando)
+{
+    printf("\n");
+    system(lineaDeComando);
+}
+//-----------------------------------------------------------------------------------------------//
 char* intToChar(int numero)
 {
     char cadena[STRING_LARGO_MAX];
@@ -212,7 +217,7 @@ char* intToChar(int numero)
 
     return retorno;
 }
-
+//-----------------------------------------------------------------------------------------------//
 char* floatToChar(float numero)
 {
     char cadena[STRING_LARGO_MAX];
@@ -224,3 +229,13 @@ char* floatToChar(float numero)
 
     return retorno;
 }
+//-----------------------------------------------------------------------------------------------//
+float calcularPromedio(float numero1, float numero2)
+{
+    float retorno;
+
+    retorno = (numero1 + numero2) / 2;
+
+    return retorno;
+}
+//-----------------------------------------------------------------------------------------------//

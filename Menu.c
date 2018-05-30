@@ -1,7 +1,13 @@
-#include <stdio.h>
+/**************************** INCLUSION DE LIBRERIAS PERSONALES **********************************/
 #include "Menu.h"
 #include "General.h"
 
+/**************************** INCLUSION DE LIBRERIAS ESTANDAR ************************************/
+#include <stdio.h>
+
+
+
+/**************************** LISTADO DE DATOS ***************************************************/
 void mostrarMenu(eMenu* menu)
 {
     int i;
@@ -13,7 +19,10 @@ void mostrarMenu(eMenu* menu)
     }
     printf("\n");
 }
+//-----------------------------------------------------------------------------------------------//
 
+
+/**************************** ENTRADA DE DATOS ***************************************************/
 int pedirOpcion(eMenu* menu)
 {
     int retorno;
@@ -53,3 +62,4 @@ int pedirOpcion(eMenu* menu)
 
     return retorno;
 }
+//-----------------------------------------------------------------------------------------------//

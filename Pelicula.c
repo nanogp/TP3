@@ -1,9 +1,12 @@
+/**************************** INCLUSION DE LIBRERIAS PERSONALES **********************************/
 #include "Pelicula.h"
+
+/**************************** INCLUSION DE LIBRERIAS ESTANDAR ************************************/
 #include <stdio.h>
 #include <string.h>
 
-//init
 
+/**************************** INICIALIZACIONES ***************************************************/
 void eMovie_initHardcode(eMovie* listadoPeliculas)
 {
     //genero datos de prueba
@@ -36,7 +39,7 @@ void eMovie_initHardcode(eMovie* listadoPeliculas)
     //ordeno por titulo
     eMovie_ordenar(listadoPeliculas, PELICULA_CANT_MAX, PELICULA_ORDEN_TITULO);
 }
-
+//-----------------------------------------------------------------------------------------------//
 int eMovie_init(eMovie* listadoPeliculas, int limitePeliculas)
 {
     int retorno = -1;
@@ -53,8 +56,10 @@ int eMovie_init(eMovie* listadoPeliculas, int limitePeliculas)
     }
     return retorno;
 }
+//-----------------------------------------------------------------------------------------------//
 
-//busqueda
+
+/**************************** BUSQUEDA ***********************************************************/
 int eMovie_buscarLugarLibre(eMovie* listadoPeliculas, int limitePeliculas)
 {
     int retorno = -1;
@@ -74,7 +79,7 @@ int eMovie_buscarLugarLibre(eMovie* listadoPeliculas, int limitePeliculas)
     }
     return retorno;
 }
-
+//-----------------------------------------------------------------------------------------------//
 int eMovie_siguienteId(eMovie* listadoPeliculas, int limitePeliculas)
 {
     int retorno = -1;
@@ -96,7 +101,7 @@ int eMovie_siguienteId(eMovie* listadoPeliculas, int limitePeliculas)
     }
     return retorno;
 }
-
+//-----------------------------------------------------------------------------------------------//
 int eMovie_estaVacio(eMovie* listadoPeliculas, int limitePeliculas)
 {
     int retorno = -1;
@@ -116,7 +121,7 @@ int eMovie_estaVacio(eMovie* listadoPeliculas, int limitePeliculas)
     }
     return retorno;
 }
-
+//-----------------------------------------------------------------------------------------------//
 int eMovie_informarListadoVacio(eMovie* listadoPeliculas, int limitePeliculas)
 {
     int retorno;
@@ -131,7 +136,7 @@ int eMovie_informarListadoVacio(eMovie* listadoPeliculas, int limitePeliculas)
     }
     return retorno;
 }
-
+//-----------------------------------------------------------------------------------------------//
 int eMovie_buscarPorId(eMovie* listadoPeliculas, int limitePeliculas, int idPelicula)
 {
     int retorno = -1;
@@ -151,7 +156,7 @@ int eMovie_buscarPorId(eMovie* listadoPeliculas, int limitePeliculas, int idPeli
     }
     return retorno;
 }
-
+//-----------------------------------------------------------------------------------------------//
 int eMovie_pedirIdYBuscar(eMovie* listadoPeliculas, int limitePeliculas)
 {
     int retorno;
@@ -172,7 +177,7 @@ int eMovie_pedirIdYBuscar(eMovie* listadoPeliculas, int limitePeliculas)
 
     return retorno;
 }
-
+//-----------------------------------------------------------------------------------------------//
 int eMovie_obtenerCantidadElementos(eMovie* listadoPeliculas, int limitePeliculas)
 {
     int retorno = 0;
@@ -188,43 +193,45 @@ int eMovie_obtenerCantidadElementos(eMovie* listadoPeliculas, int limitePelicula
 
     return retorno;
 }
+//-----------------------------------------------------------------------------------------------//
 
-//input
+
+/**************************** ENTRADA DE DATOS ***************************************************/
 int eMovie_pedirId()
 {
     return pedirIntValido(PELICULA_MSJ_INGRESE_ID, PELICULA_MSJ_REINGRESE_ID, PELICULA_ID_MIN, PELICULA_ID_MAX);
 }
-
+//-----------------------------------------------------------------------------------------------//
 int eMovie_pedirDuracion()
 {
     return pedirIntValido(PELICULA_MSJ_INGRESE_DURACION, PELICULA_MSJ_REINGRESE_DURACION, PELICULA_DURACION_MIN, PELICULA_DURACION_MAX);
 }
-
+//-----------------------------------------------------------------------------------------------//
 int eMovie_pedirPuntaje()
 {
     return pedirIntValido(PELICULA_MSJ_INGRESE_PUNTAJE, PELICULA_MSJ_REINGRESE_PUNTAJE, PELICULA_PUNTAJE_MIN, PELICULA_PUNTAJE_MAX);
 }
-
+//-----------------------------------------------------------------------------------------------//
 void eMovie_pedirTitulo(char* retorno)
 {
     pedirStringValido(retorno, PELICULA_MSJ_INGRESE_TITULO, PELICULA_MSJ_REINGRESE_TITULO, PELICULA_LARGO_TITULO);
 }
-
+//-----------------------------------------------------------------------------------------------//
 void eMovie_pedirGenero(char* retorno)
 {
     pedirStringValido(retorno, PELICULA_MSJ_INGRESE_GENERO, PELICULA_MSJ_REINGRESE_GENERO, PELICULA_LARGO_GENERO);
 }
-
+//-----------------------------------------------------------------------------------------------//
 void eMovie_pedirDescripcion(char* retorno)
 {
     pedirStringValido(retorno, PELICULA_MSJ_INGRESE_DESCRIPCION, PELICULA_MSJ_REINGRESE_DESCRIPCION, PELICULA_LARGO_DESCRIPCION);
 }
-
+//-----------------------------------------------------------------------------------------------//
 void eMovie_pedirLinkImagen(char* retorno)
 {
     pedirStringValido(retorno, PELICULA_MSJ_INGRESE_LINK, PELICULA_MSJ_REINGRESE_LINK, PELICULA_LARGO_LINK);
 }
-
+//-----------------------------------------------------------------------------------------------//
 eMovie eMovie_pedirIngreso(eMovie* listadoPeliculas, int limitePeliculas)
 {
     eMovie retorno;
@@ -247,8 +254,10 @@ eMovie eMovie_pedirIngreso(eMovie* listadoPeliculas, int limitePeliculas)
 
     return retorno;
 }
+//-----------------------------------------------------------------------------------------------//
 
-//listado
+
+/**************************** LISTADO DE DATOS ***************************************************/
 int eMovie_mostrarUno(eMovie* pelicula)
 {
      int retorno = -1;
@@ -260,7 +269,7 @@ int eMovie_mostrarUno(eMovie* pelicula)
      }
      return retorno;
 }
-
+//-----------------------------------------------------------------------------------------------//
 int eMovie_mostrarUnoCompleto(eMovie* pelicula)
 {
      int retorno = -1;
@@ -272,7 +281,7 @@ int eMovie_mostrarUnoCompleto(eMovie* pelicula)
      }
      return retorno;
 }
-
+//-----------------------------------------------------------------------------------------------//
 int eMovie_mostrarListado(eMovie* listadoPeliculas, int limitePeliculas)
 {
     int retorno = -1;
@@ -304,7 +313,10 @@ int eMovie_mostrarListado(eMovie* listadoPeliculas, int limitePeliculas)
     }
     return retorno;
 }
+//-----------------------------------------------------------------------------------------------//
 
+
+/**************************** ALTA DE REGISTRO ***************************************************/
 int eMovie_alta(eMovie* listadoPeliculas, int limitePeliculas)
 {
     int retorno = -1;
@@ -350,7 +362,10 @@ int eMovie_alta(eMovie* listadoPeliculas, int limitePeliculas)
     }
     return retorno;
 }
+//-----------------------------------------------------------------------------------------------//
 
+
+/**************************** MODIFICACION DE REGISTRO *******************************************/
 int eMovie_modificarUno(eMovie* registro)
 {
     int retorno = -1;
@@ -418,7 +433,7 @@ int eMovie_modificarUno(eMovie* registro)
     }
     return retorno;
 }
-
+//-----------------------------------------------------------------------------------------------//
 int eMovie_modificacion(eMovie* listadoPeliculas, int limitePeliculas)
 {
     eMovie registro;
@@ -476,7 +491,10 @@ int eMovie_modificacion(eMovie* listadoPeliculas, int limitePeliculas)
     ejecutarEnConsola(HACER_PAUSA);
     return huboCambios;
 }
+//-----------------------------------------------------------------------------------------------//
 
+
+/**************************** BAJA DE REGISTRO ****************************************************/
 int eMovie_baja(eMovie* listadoPeliculas, int limitePeliculas)
 {
     char confirmacion;
@@ -512,9 +530,10 @@ int eMovie_baja(eMovie* listadoPeliculas, int limitePeliculas)
     ejecutarEnConsola(HACER_PAUSA);
     return idPelicula;
 }
+//-----------------------------------------------------------------------------------------------//
 
 
-
+/**************************** ORDENAMIENTO *******************************************************/
 int eMovie_ordenar(eMovie* listadoPeliculas, int limitePeliculas, char* orden)
 {
     int retorno = -1;
@@ -588,3 +607,4 @@ int eMovie_ordenar(eMovie* listadoPeliculas, int limitePeliculas, char* orden)
     }
     return retorno;
 }
+//-----------------------------------------------------------------------------------------------//

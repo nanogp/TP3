@@ -1,8 +1,13 @@
+/**************************** INCLUSION DE LIBRERIAS PERSONALES **********************************/
 #include "Archivo.h"
 #include "Pelicula.h"
+
+/**************************** INCLUSION DE LIBRERIAS ESTANDAR ************************************/
 #include <stdio.h>
 #include <string.h>
 
+
+/**************************** INICIALIZACIONES ***************************************************/
 void eArchivoBinario_initHardcode(eMovie* listadoPeliculas)
 {
     FILE* pArchivo;
@@ -28,7 +33,7 @@ void eArchivoBinario_initHardcode(eMovie* listadoPeliculas)
         }
     }
 }
-
+//-----------------------------------------------------------------------------------------------//
 void eArchivoHtml_init(eArchivoHtml* paginaWeb)
 {
     char lineasInicio[13][100] = {{"<!DOCTYPE html>\n"},
@@ -74,8 +79,10 @@ void eArchivoHtml_init(eArchivoHtml* paginaWeb)
     }
 
 }
+//-----------------------------------------------------------------------------------------------//
 
 
+/**************************** GESTION ARCHIVO HTML ***********************************************/
 int eArchivoHtml_generarCodigoHtmlPelicula(char* htmlPelicula, eMovie* pelicula)
 {
     int retorno = -1;
@@ -116,8 +123,7 @@ int eArchivoHtml_generarCodigoHtmlPelicula(char* htmlPelicula, eMovie* pelicula)
 
     return retorno;
 }
-
-
+//-----------------------------------------------------------------------------------------------//
 int eArchivoHtml_escribirArchivoHtml(char* codigoFuente)
 {
     int retorno = -1;
@@ -135,8 +141,7 @@ int eArchivoHtml_escribirArchivoHtml(char* codigoFuente)
 
     return retorno;
 }
-
-
+//-----------------------------------------------------------------------------------------------//
 int eArchivoHtml_generarWeb(eArchivoHtml* paginaWeb, eMovie* listadoPeliculas, int limitePeliculas)
 {
     int retorno = -1;
@@ -176,8 +181,10 @@ int eArchivoHtml_generarWeb(eArchivoHtml* paginaWeb, eMovie* listadoPeliculas, i
     pausa();
     return retorno;
 }
+//-----------------------------------------------------------------------------------------------//
 
 
+/**************************** GESTION ARCHIVO BINARIO ********************************************/
 int eArchivoBinario_leer(char* rutaArchivo, eMovie* listadoPeliculas, int limitePeliculas)
 {
     int retorno = -1; //error en listadoPeliculas
@@ -208,8 +215,7 @@ int eArchivoBinario_leer(char* rutaArchivo, eMovie* listadoPeliculas, int limite
 
     return retorno;
 }
-
-
+//-----------------------------------------------------------------------------------------------//
 int eArchivoBinario_escribir(char* rutaArchivo, eMovie* listadoPeliculas, int limitePeliculas)
 {
     int retorno = -1; //error en listadoPeliculas
@@ -244,3 +250,4 @@ int eArchivoBinario_escribir(char* rutaArchivo, eMovie* listadoPeliculas, int li
 
     return retorno;
 }
+//-----------------------------------------------------------------------------------------------//
