@@ -7,7 +7,7 @@
 #include "Menu.h"
 
 /**************************** LIMITES ************************************************************/
-#define PELICULA_CANT_MAX 4
+#define PELICULA_CANT_MAX 6
 #define PELICULA_LARGO_TITULO 20
 #define PELICULA_LARGO_GENERO 20
 #define PELICULA_LARGO_DESCRIPCION 300

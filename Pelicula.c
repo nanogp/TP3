@@ -92,14 +92,15 @@ int eMovie_siguienteId(eMovie* listadoPeliculas, int limitePeliculas)
       {
          if((listadoPeliculas+i)->estado == OCUPADO)
          {
-            if((listadoPeliculas+i)->idPelicula > retorno)
+            if(((listadoPeliculas+i)->idPelicula) > retorno)
             {
-                retorno = (listadoPeliculas+i)->idPelicula + 1;
+                retorno = (listadoPeliculas+i)->idPelicula;
             }
          }
       }
    }
-   return retorno;
+
+   return (retorno+1);
 }
 //-----------------------------------------------------------------------------------------------//
 int eMovie_estaVacio(eMovie* listadoPeliculas, int limitePeliculas)

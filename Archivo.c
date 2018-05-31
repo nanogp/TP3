@@ -15,8 +15,8 @@ void eArchivoBinario_initHardcode(eMovie* listadoPeliculas)
 
    pArchivo = fopen(ARCHIVO_BINARIO_RUTA, ARCHIVO_BINARIO_LECTURA);
 
-   //si el archivo NO existe, genero uno con datos de prueba hardcodeados
-   //asi se mantienen los datos que ya estan guardados en el archivo
+   //SOLO SI EL ARCHIVO NO EXISTE, GENERO UNO CON DATOS DE PRUEBA HARDCODEADOS
+   //ASI SE MANTIENEN LOS DATOS QUE YA ESTAN GUARDADOS EN EL ARCHIVO
    if(pArchivo == NULL)
    {
       eMovie_initHardcode(listadoPeliculas);
@@ -35,19 +35,19 @@ void eArchivoBinario_initHardcode(eMovie* listadoPeliculas)
    }
 }
 //-----------------------------------------------------------------------------------------------//
-int eArchivoHtml_init(char* codigoHtml)
+int eArchivoHtml_init(char** codigoHtml)
 {
    int retorno = -1;
 
    //pido memoria para guardar el codigo fuente de la pagina en el heap y no llenar el stack
-   codigoHtml = malloc(sizeof(char)*1000*PELICULA_CANT_MAX);
+   *codigoHtml = (char*) malloc(sizeof(char)*1000*PELICULA_CANT_MAX);
 
    if(codigoHtml !=NULL)
    {
       retorno = 0;
 
       //blanqueo variables
-      strcpy(codigoHtml, "");
+      strcpy(*codigoHtml, "");
    }
 
    return retorno;
@@ -129,7 +129,7 @@ int eArchivoHtml_generarWeb(eMovie* listadoPeliculas, int limitePeliculas)
       if(eMovie_informarListadoVacio(listadoPeliculas, limitePeliculas) == 0)
       {
          //inicializo el codigo fuente de la pagina
-         eArchivoHtml_init(codigoHtml);
+         eArchivoHtml_init(&codigoHtml);
 
          //copio el inicio de la pagina
          strcat(codigoHtml, "<!DOCTYPE html>\n"

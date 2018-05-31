@@ -47,11 +47,11 @@ void eArchivoBinario_initHardcode(eMovie* listadoPeliculas);
 //-----------------------------------------------------------------------------------------------//
 /** \brief preparo los bloques de codigo de inicio y fin para generar la pagina web
  *
- * \param codigoHtml char* variable en que guardo los datos para generar la web
+ * \param codigoHtml char** puntero al que voy asignar memoria para guardar el codigo html de la web
  * \return int devuelve 0 si no hubo error y -1 si no pudo conseguir memoria
  *
  */
-int eArchivoHtml_init(char* codigoHtml);
+int eArchivoHtml_init(char** codigoHtml);
 //-----------------------------------------------------------------------------------------------//
 /** \brief genera el bloque de codigo con los datos de una pelicula
  *
