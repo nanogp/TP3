@@ -5,6 +5,7 @@
 /**************************** INCLUSION DE LIBRERIAS ESTANDAR ************************************/
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 
 /**************************** INICIALIZACIONES ***************************************************/
@@ -34,51 +35,22 @@ void eArchivoBinario_initHardcode(eMovie* listadoPeliculas)
    }
 }
 //-----------------------------------------------------------------------------------------------//
-void eArchivoHtml_init(eArchivoHtml* paginaWeb)
+int eArchivoHtml_init(char* codigoHtml)
 {
-   char lineasInicio[13][100] = {{"<!DOCTYPE html>\n"},
-                                 {"<html lang='en'>\n"},
-                                 {"<head>\n"},
-                                 {"    <meta charset='utf-8'>\n"},
-                                 {"    <meta http-equiv='X-UA-Compatible' content='IE=edge'>\n"},
-                                 {"    <meta name='viewport' content='width=device-width, initial-scale=1'>\n"},
-                                 {"    <title>Lista peliculas</title>\n"},
-                                 {"    <link href='css/bootstrap.min.css' rel='stylesheet'>\n"},
-                                 {"    <link href='css/custom.css' rel='stylesheet'>\n"},
-                                 {"</head>\n"},
-                                 {"<body>\n"},
-                                 {"    <div class='container'>\n"},
-                                 {"        <div class='row'>\n"}};
+   int retorno = -1;
 
-   char lineasFin[8][100] = {{"        </div>\n"},
-                             {"    </div>\n"},
-                             {"    <script src='js/jquery-1.11.3.min.js'></script>\n"},
-                             {"    <script src='js/bootstrap.min.js'></script>\n"},
-                             {"    <script src='js/ie10-viewport-bug-workaround.js'></script>\n"},
-                             {"    <script src='js/holder.min.js'></script>\n"},
-                             {"</body>\n"},
-                             {"</html>\n"}};
+   //pido memoria para guardar el codigo fuente de la pagina en el heap y no llenar el stack
+   codigoHtml = malloc(sizeof(char)*1000*PELICULA_CANT_MAX);
 
-   paginaWeb->cantLineasIni = ARCHIVO_NRO_LINEAS_INI;
-   paginaWeb->cantLineasFin = ARCHIVO_NRO_LINEAS_FIN;
-   paginaWeb->cantLineasPelicula = ARCHIVO_NRO_LINEAS_PELICULA;
-   strcpy(paginaWeb->codigoFuente, "");
-
-   //procedo a armar el inicio y fin de pagina para tenerlos listos
-   //luego solo concateno las peliculas en medio
-
-   //armo el inicio de pagina
-   for (int i=0; i<paginaWeb->cantLineasIni; i++)
+   if(codigoHtml !=NULL)
    {
-      strcat((char*)&paginaWeb->inicioDePagina, (char*)(lineasInicio+i));
+      retorno = 0;
+
+      //blanqueo variables
+      strcpy(codigoHtml, "");
    }
 
-   //armo el fin de pagina
-   for (int i=0; i<paginaWeb->cantLineasFin; i++)
-   {
-      strcat((char*)&paginaWeb->finDePagina, (char*)(lineasFin+i));
-   }
-
+   return retorno;
 }
 //-----------------------------------------------------------------------------------------------//
 
@@ -125,7 +97,7 @@ int eArchivoHtml_generarCodigoHtmlPelicula(char* htmlPelicula, eMovie* pelicula)
    return retorno;
 }
 //-----------------------------------------------------------------------------------------------//
-int eArchivoHtml_escribirArchivoHtml(char* codigoFuente)
+int eArchivoHtml_escribirArchivoHtml(char* codigoHtml)
 {
    int retorno = -1;
    FILE* pArchivo;
@@ -136,45 +108,65 @@ int eArchivoHtml_escribirArchivoHtml(char* codigoFuente)
    {
       retorno = 0;
 
-      fprintf(pArchivo,"%s",codigoFuente);
+      fprintf(pArchivo,"%s",codigoHtml);
       fclose(pArchivo);
    }
 
    return retorno;
 }
 //-----------------------------------------------------------------------------------------------//
-int eArchivoHtml_generarWeb(eArchivoHtml* paginaWeb, eMovie* listadoPeliculas, int limitePeliculas)
+int eArchivoHtml_generarWeb(eMovie* listadoPeliculas, int limitePeliculas)
 {
    int retorno = -1;
    int i;
-   char* pCodigoFuente = paginaWeb->codigoFuente;
+   char* codigoHtml = NULL;
 
-   if(paginaWeb != NULL && listadoPeliculas != NULL && limitePeliculas > 0)
+   if(listadoPeliculas != NULL && limitePeliculas > 0)
    {
       retorno = 0;
       limpiarPantallaYMostrarTitulo(ARCHIVO_GENERAR_WEB_TITULO);
 
       if(eMovie_informarListadoVacio(listadoPeliculas, limitePeliculas) == 0)
       {
-         eArchivoHtml_init(paginaWeb);
+         //inicializo el codigo fuente de la pagina
+         eArchivoHtml_init(codigoHtml);
 
-         //voy a armar el codigo fuente de la pagina
-         strcat(paginaWeb->codigoFuente, paginaWeb->inicioDePagina);
+         //copio el inicio de la pagina
+         strcat(codigoHtml, "<!DOCTYPE html>\n"
+                            "<html lang='en'>\n"
+                            "<head>\n"
+                            "    <meta charset='utf-8'>\n"
+                            "    <meta http-equiv='X-UA-Compatible' content='IE=edge'>\n"
+                            "    <meta name='viewport' content='width=device-width initial-scale=1'>\n"
+                            "    <title>Lista peliculas</title>\n"
+                            "    <link href='css/bootstrap.min.css' rel='stylesheet'>\n"
+                            "    <link href='css/custom.css' rel='stylesheet'>\n"
+                            "</head>\n"
+                            "<body>\n"
+                            "    <div class='container'>\n"
+                            "        <div class='row'>\n");
 
+         //copio el codigo de las peliculas
          for(i=0 ; i<limitePeliculas ; i++)
          {
             if((listadoPeliculas+i)->estado == OCUPADO)
             {
-               //eArchivoHtml_generarCodigoHtmlPelicula((char*)&(paginaWeb->codigoFuente), (listadoPeliculas+i));
-               eArchivoHtml_generarCodigoHtmlPelicula(pCodigoFuente, (listadoPeliculas+i));
+               eArchivoHtml_generarCodigoHtmlPelicula(codigoHtml, (listadoPeliculas+i));
             }
          }
 
-         //agrego codigo html de la pelicula al codigo fuente de la web
-         strcat(paginaWeb->codigoFuente, paginaWeb->finDePagina);
+         //copio el final de la pagina
+         strcat(codigoHtml, "        </div>\n"
+                            "    </div>\n"
+                            "    <script src='js/jquery-1.11.3.min.js'></script>\n"
+                            "    <script src='js/bootstrap.min.js'></script>\n"
+                            "    <script src='js/ie10-viewport-bug-workaround.js'></script>\n"
+                            "    <script src='js/holder.min.js'></script>\n"
+                            "</body>\n"
+                            "</html>\n");
 
          //llamo a escribir el archivo en disco con el codigo generado
-         eArchivoHtml_escribirArchivoHtml(paginaWeb->codigoFuente);
+         eArchivoHtml_escribirArchivoHtml(codigoHtml);
 
          imprimirEnPantalla(ARCHIVO_MSJ_HTML_OK);
          imprimirEnPantalla(ARCHIVO_HTML_RUTA);

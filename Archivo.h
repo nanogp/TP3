@@ -35,15 +35,6 @@
 /**************************** MENUS **************************************************************/
 
 /**************************** ESTRUCTURAS ********************************************************/
-typedef struct
-{
-   int cantLineasIni;//13
-   int cantLineasPelicula;//14
-   int cantLineasFin;//8
-   char codigoFuente[1000*PELICULA_CANT_MAX];
-   char inicioDePagina[500];
-   char finDePagina[300];
-}eArchivoHtml;
 
 /**************************** INICIALIZACIONES ***************************************************/
 /** \brief inicializo el archivo con datos en caso de que no exista
@@ -56,11 +47,11 @@ void eArchivoBinario_initHardcode(eMovie* listadoPeliculas);
 //-----------------------------------------------------------------------------------------------//
 /** \brief preparo los bloques de codigo de inicio y fin para generar la pagina web
  *
- * \param plantillaWeb eArchivoHtml* variable en que guardo los datos para generar la web
- * \return void
+ * \param codigoHtml char* variable en que guardo los datos para generar la web
+ * \return int devuelve 0 si no hubo error y -1 si no pudo conseguir memoria
  *
  */
-void eArchivoHtml_init(eArchivoHtml* plantillaWeb);
+int eArchivoHtml_init(char* codigoHtml);
 //-----------------------------------------------------------------------------------------------//
 /** \brief genera el bloque de codigo con los datos de una pelicula
  *
@@ -76,21 +67,20 @@ int eArchivoHtml_generarCodigoHtmlPelicula(char* htmlPelicula, eMovie* pelicula)
 /**************************** GESTION ARCHIVO HTML ***********************************************/
 /** \brief escribe un archivo html en disco con el codigo recibido por parametro
  *
- * \param codigoFuente char* el codigo fuente a escribir en el archivo
+ * \param codigoHtml char* el codigo fuente a escribir en el archivo
  * \return int devuelve cero si no hubo ningun error
  *
  */
-int eArchivoHtml_escribirArchivoHtml(char* codigoFuente);
+int eArchivoHtml_escribirArchivoHtml(char* codigoHtml);
 //-----------------------------------------------------------------------------------------------//
 /** \brief genera un archivo html en disco con el listado de peliculas recibido
  *
- * \param paginaWeb eArchivoHtml* una variable con todos los datos para generar la pagina web
  * \param listadoPeliculas eMovie* el listado de peliculas a utilizar
  * \param limitePeliculas int cantidad maxima de elementos en el listado
  * \return int devuelve cero si no hubo ningun error
  *
  */
-int eArchivoHtml_generarWeb(eArchivoHtml* paginaWeb, eMovie* listadoPeliculas, int limitePeliculas);
+int eArchivoHtml_generarWeb(eMovie* listadoPeliculas, int limitePeliculas);
 //-----------------------------------------------------------------------------------------------//
 
 

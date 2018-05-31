@@ -31,12 +31,12 @@
 #define PELICULA_MSJ_LISTA_VACIA "\n\nLa lista de Peliculas esta vacia o todos los registros se dieron de baja"
 #define PELICULA_MSJ_NO_MAS_LUGAR "\nNo hay mas lugares disponibles para altas de Pelicula"
 #define PELICULA_MSJ_REINGRESE_ID "\nEl ID debe ser un numero mayor que cero. Reingrese un ID valido: "
-#define PELICULA_MSJ_REINGRESE_TITULO "\nTitulo muy largo. Reingrese por favor hasta 20 caracteres: "
-#define PELICULA_MSJ_REINGRESE_GENERO "\nGenero muy largo. Reingrese por favor hasta 20 caracteres: "
-#define PELICULA_MSJ_REINGRESE_DESCRIPCION "\nDescripcion muy larga. Reingrese por favor hasta 500 caracteres: "
+#define PELICULA_MSJ_REINGRESE_TITULO "\nTitulo no valido. Reingrese por favor hasta 20 caracteres: "
+#define PELICULA_MSJ_REINGRESE_GENERO "\nGenero no valido. Reingrese por favor hasta 20 caracteres: "
+#define PELICULA_MSJ_REINGRESE_DESCRIPCION "\nDescripcion no valida. Reingrese por favor hasta 500 caracteres: "
 #define PELICULA_MSJ_REINGRESE_DURACION "\nDuracion no valida. Reingrese por favor un numero entre 1 y 300: "
 #define PELICULA_MSJ_REINGRESE_PUNTAJE "\nPuntaje no valido. Reingrese por favor un numero entre 1 y 100: "
-#define PELICULA_MSJ_REINGRESE_LINK "\nLink a imagen muy largo. Reingrese por favor hasta 500 caracteres: "
+#define PELICULA_MSJ_REINGRESE_LINK "\nLink a imagen no valido. Reingrese por favor hasta 500 caracteres: "
 
 /**************************** MENSAJES INFO ******************************************************/
 #define PELICULA_MSJ_CONFIRMAR_BAJA "Confirma que desea dar de baja dicha Pelicula?"
@@ -44,8 +44,8 @@
 #define PELICULA_MSJ_BAJA_OK "\nLa Pelicula se dio de baja"
 #define PELICULA_MSJ_MODIFICACION_SIN_CAMBIOS "\nNo hubo cambio alguno"
 #define PELICULA_MSJ_MODIFICACION_OK "\nLa Pelicula se modifico"
-#define PELICULA_MSJ_REGISTRO_ACTUAL "\n\nREGISTRO DE PELICULA ACTUAL:\nÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ"
-#define PELICULA_MSJ_REGISTRO_MODIFICADO "\n\nREGISTRO MODIFICADO:\nÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ"
+#define PELICULA_MSJ_REGISTRO_ACTUAL "\n\nREGISTRO DE PELICULA ACTUAL:\nì»´ì»´ì»´ì»´ì»´ì»´ì»´ì»´ì»´ì»´ì»´ì»´ì»´ì»´"
+#define PELICULA_MSJ_REGISTRO_MODIFICADO "\n\nREGISTRO MODIFICADO:\nì»´ì»´ì»´ì»´ì»´ì»´ì»´ì»´ì»´ì»´"
 
 /**************************** MENSAJES INPUT *****************************************************/
 #define PELICULA_MSJ_INGRESE_ID "\n\nIngrese el ID de Pelicula: "

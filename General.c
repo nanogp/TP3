@@ -8,14 +8,14 @@
 
 
 /**************************** BUSQUEDA ***********************************************************/
-int buscarEnArrayInt(int array[], int limite, int buscar)
+int buscarEnArrayInt(int* array, int limite, int buscar)
 {
    int retorno = -1;
    int i;
 
    for(i=0 ; i<limite ; i++)
    {
-      if(array[i] == buscar)
+      if(*(array+i) == buscar)
       {
          retorno = i;
          break;
@@ -117,32 +117,47 @@ float pedirFloatValido(char* mensajeIngreso, char* mensajeReingreso, float limit
    return retorno;
 }
 //-----------------------------------------------------------------------------------------------//
-void pedirString(char retorno[], char* mensajeIngreso)
+void pedirString(char* retorno, char* mensajeIngreso)
 {
    printf("%s", mensajeIngreso);
    fflush(stdin);
    gets(retorno);
 }
 //-----------------------------------------------------------------------------------------------//
-void pedirStringValido(char retorno[], char* mensajeIngreso, char* mensajeReingreso, int limite)
+void pedirStringValido(char* retorno, char* mensajeIngreso, char* mensajeReingreso, int limite)
 {
    char stringIngresado[STRING_LARGO_MAX];
+   char valido = 'N';
 
    pedirString(stringIngresado, mensajeIngreso);
 
-   while(strlen(stringIngresado) > limite)
+   do
    {
-      printf("\nEl texto ingresado supera el l¡mite de %d caracteres establecido.", limite);
-      pedirString(stringIngresado, mensajeIngreso);
-   }
+      if(strlen(stringIngresado) > limite)
+      {
+         printf("\nEl texto ingresado supera el l¡mite de %d caracteres establecido.", limite);
+         pedirString(stringIngresado, mensajeReingreso);
+      }
+      else if(strlen(stringIngresado) == 0)
+      {
+         printf("\nEl texto ingresado no puede estar vacio. Ingrese al menos 1 caracter.");
+         pedirString(stringIngresado, mensajeReingreso);
+      }
+      else
+      {
+         valido = 'S';
+      }
 
+   }while(valido == 'N');
+
+   //copio cadena ingresada en el retorno
    strcpy(retorno, stringIngresado);
 }
 //-----------------------------------------------------------------------------------------------//
 
 
 /**************************** LISTADO DE DATOS ***************************************************/
-void generarTitulo(char texto[])
+void generarTitulo(char* texto)
 {
    int i;
    char nuevoTitulo[TITULO_LARGO_MAX] = "º ";
@@ -168,12 +183,12 @@ void generarTitulo(char texto[])
 
 }
 //-----------------------------------------------------------------------------------------------//
-void imprimirEnPantalla(char texto[])
+void imprimirEnPantalla(char* texto)
 {
    printf("%s", texto);
 }
 //-----------------------------------------------------------------------------------------------//
-void imprimirTitulo(char texto[])
+void imprimirTitulo(char* texto)
 {
    char titulo[TITULO_LARGO_MAX];
    strcpy(titulo, texto);
@@ -186,7 +201,7 @@ void limpiarPantalla()
    ejecutarEnConsola(LIMPIAR_PANTALLA);
 }
 //-----------------------------------------------------------------------------------------------//
-void limpiarPantallaYMostrarTitulo(char texto[])
+void limpiarPantallaYMostrarTitulo(char* texto)
 {
    ejecutarEnConsola(LIMPIAR_PANTALLA);
    imprimirTitulo(texto);

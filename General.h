@@ -195,5 +195,4 @@ char* floatToChar(float numero);
  */
 float calcularPromedio(float, float);
 //-----------------------------------------------------------------------------------------------//
-
 #endif // GENERAL_H_INCLUDED

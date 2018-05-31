@@ -9,27 +9,26 @@
 #include <stdlib.h>
 
 /**************************** MENUS **************************************************************/
-#define MENU_MAIN_TITULO "TP3 MARIANO PONTI"
-#define MENU_MAIN_CANT 5
-#define MENU_MAIN_DETALLE1  "1. Agregar pelicula"
-#define MENU_MAIN_DETALLE2  "2. Borrar pelicula"
-#define MENU_MAIN_DETALLE3  "3. Modificar pelicula"
-#define MENU_MAIN_DETALLE4  "4. Generar pagina web"
-#define MENU_MAIN_DETALLE0  "0. Salir"
+#define MAIN_MENU_TITULO "TP3 MARIANO PONTI"
+#define MAIN_MENU_CANT 5
+#define MAIN_MENU_DETALLE1  "1. Agregar pelicula"
+#define MAIN_MENU_DETALLE2  "2. Borrar pelicula"
+#define MAIN_MENU_DETALLE3  "3. Modificar pelicula"
+#define MAIN_MENU_DETALLE4  "4. Generar pagina web"
+#define MAIN_MENU_DETALLE0  "0. Salir"
 
 int main()
 {
-   eMenu menuPrincipal = {/*cantidad de opciones*/MENU_MAIN_CANT,
+   eMenu menuPrincipal = {/*cantidad de opciones*/MAIN_MENU_CANT,
                           /*codigos*/{1,2,3,4,0},
-                          /*descripciones*/{MENU_MAIN_DETALLE1,MENU_MAIN_DETALLE2,MENU_MAIN_DETALLE3,MENU_MAIN_DETALLE4,MENU_MAIN_DETALLE0},
-                          /*titulo del menu*/{MENU_MAIN_TITULO}};
+                          /*descripciones*/{MAIN_MENU_DETALLE1,MAIN_MENU_DETALLE2,MAIN_MENU_DETALLE3,MAIN_MENU_DETALLE4,MAIN_MENU_DETALLE0},
+                          /*titulo del menu*/{MAIN_MENU_TITULO}};
    int opcion;
    char salirDelPrograma = 'N';
 
 
    /************************ ARRAYS DE ESTRUCTURAS **********************************************/
    eMovie listadoPeliculas[PELICULA_CANT_MAX] = {};
-   eArchivoHtml paginaWeb;
 
    /************************ INICIALIZACION *****************************************************/
    eMovie_init(listadoPeliculas, PELICULA_CANT_MAX);
@@ -63,7 +62,7 @@ int main()
             break;
          case 4:
             /************ LISTADO WEB ********************************************************/
-            eArchivoHtml_generarWeb(&paginaWeb, listadoPeliculas, PELICULA_CANT_MAX);
+            eArchivoHtml_generarWeb(listadoPeliculas, PELICULA_CANT_MAX);
             break;
          case 0:
             /************ SALIR DEL PROGRAMA *************************************************/
