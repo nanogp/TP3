@@ -27,7 +27,7 @@
 /** \brief busca coincidencia de un valor entero dentro de un array
  *
  * \param array int*: el array donde buscar
- * \param limite int: la cantidad de elementos del array
+ * \param limite int: la cantidad maxima de elementos del array
  * \param buscar int: el numero entero a buscar
  * \return int la posicion del elemento buscado. -1 en caso de no encontrarlo
  *

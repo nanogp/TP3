@@ -95,85 +95,85 @@ typedef struct{
 
 
 /**************************** INICIALIZACIONES ***************************************************/
-/** \brief
+/** \brief inicializa el listado de peliculas con datos de prueba
  *
- * \param listadoPeliculas eMovie*
+ * \param listadoPeliculas eMovie* la variable donde se guarda el listado
  * \return void
  *
  */
 void eMovie_initHardcode(eMovie* listadoPeliculas);
 //-----------------------------------------------------------------------------------------------//
-/** \brief
+/** \brief inicializa el array de peliculas en cero
  *
- * \param listadoPeliculas eMovie*
- * \param limitePeliculas int
- * \return int
+ * \param listadoPeliculas eMovie* la variable donde se guarda el listado
+ * \param limitePeliculas int la cantidad maxima de elementos del listado
+ * \return int devuelve cero si no hubo ningun error
  *
  */
 int eMovie_init(eMovie* listadoPeliculas, int limitePeliculas);
 
 
 /**************************** BUSQUEDA ***********************************************************/
-/** \brief
+/** \brief busca en el listado un registro con estado libre y devuelve su posicion
  *
- * \param listadoPeliculas eMovie*
- * \param limitePeliculas int
- * \return int
+ * \param listadoPeliculas eMovie* la variable donde se guarda el listado
+ * \param limitePeliculas int la cantidad maxima de elementos del listado
+ * \return int devuelve numero de posicion en el array
  *
  */
 int eMovie_buscarLugarLibre(eMovie* listadoPeliculas, int limitePeliculas);
 //-----------------------------------------------------------------------------------------------//
-/** \brief
+/** \brief calcula el siguiente Id disponible para una pelicula
  *
- * \param listadoPeliculas eMovie*
- * \param limitePeliculas int
- * \return int
+ * \param listadoPeliculas eMovie* la variable donde se guarda el listado
+ * \param limitePeliculas int la cantidad maxima de elementos del listado
+ * \return int el numero de Id calculado
  *
  */
 int eMovie_siguienteId(eMovie* listadoPeliculas, int limitePeliculas);
 //-----------------------------------------------------------------------------------------------//
-/** \brief
+/** \brief verifica si no hay registros ocupados en el listado de peliculas
  *
- * \param listadoPeliculas eMovie*
- * \param limitePeliculas int
- * \return int
+ * \param listadoPeliculas eMovie* la variable donde se guarda el listado
+ * \param limitePeliculas int la cantidad maxima de elementos del listado
+ * \return int devuelve 1 si esta vacío, 0 si esta ocupado y -1 si hubo error
  *
  */
 int eMovie_estaVacio(eMovie* listadoPeliculas, int limitePeliculas);
 //-----------------------------------------------------------------------------------------------//
-/** \brief
+/** \brief informa en pantalla si el listado de peliculas esta vacio
  *
- * \param listadoPeliculas eMovie*
- * \param limitePeliculas int
- * \return int
+ * \param listadoPeliculas eMovie* la variable donde se guarda el listado
+ * \param limitePeliculas int la cantidad maxima de elementos del listado
+ * \return int devuelve cero si no hubo ningun error
  *
  */
 int eMovie_informarListadoVacio(eMovie* listadoPeliculas, int limitePeliculas);
 //-----------------------------------------------------------------------------------------------//
-/** \brief
+/** \brief busca un Id en el listado y devuelve su posicion
  *
- * \param listadoPeliculas eMovie*
- * \param limitePeliculas int
- * \param idPelicula int
- * \return int
+ * \param listadoPeliculas eMovie* la variable donde se guarda el listado
+ * \param limitePeliculas int la cantidad maxima de elementos del listado
+ * \param idPelicula int el Id a buscar
+ * \return int la posicion en el array, -1 si no se encuentra, -2 si hubo error
  *
  */
 int eMovie_buscarPorId(eMovie* listadoPeliculas, int limitePeliculas, int idPelicula);
 //-----------------------------------------------------------------------------------------------//
-/** \brief
+/** \brief pide al usuario ingresar un Id y busca su posicion en el listado de peliculas
  *
- * \param listadoPeliculas eMovie*
- * \param limitePeliculas int
- * \return int
+ * \param listadoPeliculas eMovie* la variable donde se guarda el listado
+ * \param limitePeliculas int la cantidad maxima de elementos del listado
+ * \return int la posicion en el array, -1 si no se encuentra, -2 si hubo error
  *
  */
 int eMovie_pedirIdYBuscar(eMovie* listadoPeliculas, int limitePeliculas);
 //-----------------------------------------------------------------------------------------------//
-/** \brief
+/** \brief obtiene la cantidad de peliculas dadas de alta en el listado de peliculas
  *
- * \param listadoPeliculas eMovie*
- * \param limitePeliculas int
- * \return int
+ * \param listadoPeliculas eMovie* la variable donde se guarda el listado
+ * \param limitePeliculas int la cantidad maxima de elementos del listado
+ * \return int devuelve la cantidad de elementos o -1 si hubo error
  *
  */
 int eMovie_obtenerCantidadElementos(eMovie* listadoPeliculas, int limitePeliculas);
@@ -236,8 +236,8 @@ void eMovie_pedirLinkImagen(char* retorno);
 //-----------------------------------------------------------------------------------------------//
 /** \brief
  *
- * \param listadoPeliculas eMovie*
- * \param limitePeliculas int
+ * \param listadoPeliculas eMovie* la variable donde se guarda el listado
+ * \param limitePeliculas int la cantidad maxima de elementos del listado
  * \return eMovie
  *
  */
@@ -264,8 +264,8 @@ int eMovie_mostrarUnoCompleto(eMovie* pelicula);
 //-----------------------------------------------------------------------------------------------//
 /** \brief
  *
- * \param listadoPeliculas eMovie*
- * \param limitePeliculas int
+ * \param listadoPeliculas eMovie* la variable donde se guarda el listado
+ * \param limitePeliculas int la cantidad maxima de elementos del listado
  * \return int
  *
  */
@@ -276,8 +276,8 @@ int eMovie_mostrarListado(eMovie* listadoPeliculas, int limitePeliculas);
 /**************************** GESTION DE DATOS ***************************************************/
 /** \brief
  *
- * \param listadoPeliculas eMovie*
- * \param limitePeliculas int
+ * \param listadoPeliculas eMovie* la variable donde se guarda el listado
+ * \param limitePeliculas int la cantidad maxima de elementos del listado
  * \return int
  *
  */
@@ -285,8 +285,8 @@ int eMovie_alta(eMovie* listadoPeliculas, int limitePeliculas);
 //-----------------------------------------------------------------------------------------------//
 /** \brief
  *
- * \param listadoPeliculas eMovie*
- * \param limitePeliculas int
+ * \param listadoPeliculas eMovie* la variable donde se guarda el listado
+ * \param limitePeliculas int la cantidad maxima de elementos del listado
  * \return int
  *
  */
@@ -294,8 +294,8 @@ int eMovie_modificacion(eMovie* listadoPeliculas, int limitePeliculas);
 //-----------------------------------------------------------------------------------------------//
 /** \brief
  *
- * \param listadoPeliculas eMovie*
- * \param limitePeliculas int
+ * \param listadoPeliculas eMovie* la variable donde se guarda el listado
+ * \param limitePeliculas int la cantidad maxima de elementos del listado
  * \return int
  *
  */
@@ -307,7 +307,7 @@ int eMovie_baja(eMovie* listadoPeliculas, int limitePeliculas);
 /** \brief
  *
  * \param listado eMovie*
- * \param limitePeliculas int
+ * \param limitePeliculas int la cantidad maxima de elementos del listado
  * \param orden char*
  * \return int
  *

@@ -62,12 +62,12 @@ int eMovie_init(eMovie* listadoPeliculas, int limitePeliculas)
 /**************************** BUSQUEDA ***********************************************************/
 int eMovie_buscarLugarLibre(eMovie* listadoPeliculas, int limitePeliculas)
 {
-   int retorno = -1;
+   int retorno = -2;
    int i;
 
    if(listadoPeliculas != NULL && limitePeliculas > 0)
    {
-      retorno = -2;
+      retorno = -1;
       for(i=0 ; i<limitePeliculas ; i++)
       {
          if((listadoPeliculas+i)->estado == LIBRE)
@@ -140,12 +140,12 @@ int eMovie_informarListadoVacio(eMovie* listadoPeliculas, int limitePeliculas)
 //-----------------------------------------------------------------------------------------------//
 int eMovie_buscarPorId(eMovie* listadoPeliculas, int limitePeliculas, int idPelicula)
 {
-   int retorno = -1;
+   int retorno = -2;
    int i;
 
    if(listadoPeliculas != NULL && limitePeliculas > 0)
    {
-      retorno = -2;
+      retorno = -1;
       for(i=0 ; i<limitePeliculas ; i++)
       {
          if((listadoPeliculas+i)->estado == OCUPADO && (listadoPeliculas+i)->idPelicula == idPelicula)
@@ -160,35 +160,44 @@ int eMovie_buscarPorId(eMovie* listadoPeliculas, int limitePeliculas, int idPeli
 //-----------------------------------------------------------------------------------------------//
 int eMovie_pedirIdYBuscar(eMovie* listadoPeliculas, int limitePeliculas)
 {
-   int retorno;
+   int retorno = -2;
    int idPelicula;
 
-   do
+   if(listadoPeliculas != NULL && limitePeliculas > 0)
    {
-      eMovie_mostrarListado(listadoPeliculas, limitePeliculas);
-      idPelicula = eMovie_pedirId();
-      retorno = eMovie_buscarPorId(listadoPeliculas, limitePeliculas, idPelicula);
-      if(retorno < 0)
+      retorno = -1;
+      do
       {
-         imprimirEnPantalla(PELICULA_MSJ_ID_NO_EXISTE);
-         pausa();
+         eMovie_mostrarListado(listadoPeliculas, limitePeliculas);
+         idPelicula = eMovie_pedirId();
+         retorno = eMovie_buscarPorId(listadoPeliculas, limitePeliculas, idPelicula);
+         if(retorno < 0)
+         {
+            imprimirEnPantalla(PELICULA_MSJ_ID_NO_EXISTE);
+            pausa();
+         }
       }
+      while(retorno < 0);
    }
-   while(retorno < 0);
 
    return retorno;
 }
 //-----------------------------------------------------------------------------------------------//
 int eMovie_obtenerCantidadElementos(eMovie* listadoPeliculas, int limitePeliculas)
 {
-   int retorno = 0;
+   int retorno = -1;
    int i;
 
-   for(i=0 ; i<limitePeliculas ; i++)
+   if(listadoPeliculas != NULL && limitePeliculas > 0)
    {
-      if((listadoPeliculas+i)->estado == OCUPADO)
+      retorno = 0;
+
+      for(i=0 ; i<limitePeliculas ; i++)
       {
-         retorno++;
+         if((listadoPeliculas+i)->estado == OCUPADO)
+         {
+            retorno++;
+         }
       }
    }
 
