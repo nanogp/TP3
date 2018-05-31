@@ -95,66 +95,223 @@ typedef struct{
 
 
 /**************************** INICIALIZACIONES ***************************************************/
+/** \brief
+ *
+ * \param listadoPeliculas eMovie*
+ * \return void
+ *
+ */
 void eMovie_initHardcode(eMovie* listadoPeliculas);
 //-----------------------------------------------------------------------------------------------//
+/** \brief
+ *
+ * \param listadoPeliculas eMovie*
+ * \param limitePeliculas int
+ * \return int
+ *
+ */
 int eMovie_init(eMovie* listadoPeliculas, int limitePeliculas);
 
 
 /**************************** BUSQUEDA ***********************************************************/
+/** \brief
+ *
+ * \param listadoPeliculas eMovie*
+ * \param limitePeliculas int
+ * \return int
+ *
+ */
 int eMovie_buscarLugarLibre(eMovie* listadoPeliculas, int limitePeliculas);
 //-----------------------------------------------------------------------------------------------//
+/** \brief
+ *
+ * \param listadoPeliculas eMovie*
+ * \param limitePeliculas int
+ * \return int
+ *
+ */
 int eMovie_siguienteId(eMovie* listadoPeliculas, int limitePeliculas);
 //-----------------------------------------------------------------------------------------------//
+/** \brief
+ *
+ * \param listadoPeliculas eMovie*
+ * \param limitePeliculas int
+ * \return int
+ *
+ */
 int eMovie_estaVacio(eMovie* listadoPeliculas, int limitePeliculas);
 //-----------------------------------------------------------------------------------------------//
+/** \brief
+ *
+ * \param listadoPeliculas eMovie*
+ * \param limitePeliculas int
+ * \return int
+ *
+ */
 int eMovie_informarListadoVacio(eMovie* listadoPeliculas, int limitePeliculas);
 //-----------------------------------------------------------------------------------------------//
+/** \brief
+ *
+ * \param listadoPeliculas eMovie*
+ * \param limitePeliculas int
+ * \param idPelicula int
+ * \return int
+ *
+ */
 int eMovie_buscarPorId(eMovie* listadoPeliculas, int limitePeliculas, int idPelicula);
 //-----------------------------------------------------------------------------------------------//
+/** \brief
+ *
+ * \param listadoPeliculas eMovie*
+ * \param limitePeliculas int
+ * \return int
+ *
+ */
 int eMovie_pedirIdYBuscar(eMovie* listadoPeliculas, int limitePeliculas);
 //-----------------------------------------------------------------------------------------------//
+/** \brief
+ *
+ * \param listadoPeliculas eMovie*
+ * \param limitePeliculas int
+ * \return int
+ *
+ */
 int eMovie_obtenerCantidadElementos(eMovie* listadoPeliculas, int limitePeliculas);
 //-----------------------------------------------------------------------------------------------//
 
 
 /**************************** ENTRADA DE DATOS ***************************************************/
+/** \brief
+ *
+ * \return int
+ *
+ */
 int eMovie_pedirId();
 //-----------------------------------------------------------------------------------------------//
+/** \brief
+ *
+ * \return int
+ *
+ */
 int eMovie_pedirDuracion();
 //-----------------------------------------------------------------------------------------------//
+/** \brief
+ *
+ * \return int
+ *
+ */
 int eMovie_pedirPuntaje();
 //-----------------------------------------------------------------------------------------------//
+/** \brief
+ *
+ * \param retorno char*
+ * \return void
+ *
+ */
 void eMovie_pedirTitulo(char* retorno);
 //-----------------------------------------------------------------------------------------------//
+/** \brief
+ *
+ * \param retorno char*
+ * \return void
+ *
+ */
 void eMovie_pedirGenero(char* retorno);
 //-----------------------------------------------------------------------------------------------//
+/** \brief
+ *
+ * \param retorno char*
+ * \return void
+ *
+ */
 void eMovie_pedirDescripcion(char* retorno);
 //-----------------------------------------------------------------------------------------------//
+/** \brief
+ *
+ * \param retorno char*
+ * \return void
+ *
+ */
 void eMovie_pedirLinkImagen(char* retorno);
 //-----------------------------------------------------------------------------------------------//
+/** \brief
+ *
+ * \param listadoPeliculas eMovie*
+ * \param limitePeliculas int
+ * \return eMovie
+ *
+ */
 eMovie eMovie_pedirIngreso(eMovie* listadoPeliculas, int limitePeliculas);
 //-----------------------------------------------------------------------------------------------//
 
 
 /**************************** LISTADO DE DATOS ***************************************************/
+/** \brief
+ *
+ * \param pelicula eMovie*
+ * \return int
+ *
+ */
 int eMovie_mostrarUno(eMovie* pelicula);
 //-----------------------------------------------------------------------------------------------//
+/** \brief
+ *
+ * \param pelicula eMovie*
+ * \return int
+ *
+ */
 int eMovie_mostrarUnoCompleto(eMovie* pelicula);
 //-----------------------------------------------------------------------------------------------//
+/** \brief
+ *
+ * \param listadoPeliculas eMovie*
+ * \param limitePeliculas int
+ * \return int
+ *
+ */
 int eMovie_mostrarListado(eMovie* listadoPeliculas, int limitePeliculas);
 //-----------------------------------------------------------------------------------------------//
 
 
 /**************************** GESTION DE DATOS ***************************************************/
+/** \brief
+ *
+ * \param listadoPeliculas eMovie*
+ * \param limitePeliculas int
+ * \return int
+ *
+ */
 int eMovie_alta(eMovie* listadoPeliculas, int limitePeliculas);
 //-----------------------------------------------------------------------------------------------//
+/** \brief
+ *
+ * \param listadoPeliculas eMovie*
+ * \param limitePeliculas int
+ * \return int
+ *
+ */
 int eMovie_modificacion(eMovie* listadoPeliculas, int limitePeliculas);
 //-----------------------------------------------------------------------------------------------//
+/** \brief
+ *
+ * \param listadoPeliculas eMovie*
+ * \param limitePeliculas int
+ * \return int
+ *
+ */
 int eMovie_baja(eMovie* listadoPeliculas, int limitePeliculas);
 //-----------------------------------------------------------------------------------------------//
 
 
 /**************************** ORDENAMIENTO *******************************************************/
+/** \brief
+ *
+ * \param listado eMovie*
+ * \param limitePeliculas int
+ * \param orden char*
+ * \return int
+ *
+ */
 int eMovie_ordenar(eMovie* listado, int limitePeliculas, char* orden);
 //-----------------------------------------------------------------------------------------------//
 #endif // PELICULA_H_INCLUDED
