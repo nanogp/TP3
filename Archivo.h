@@ -37,12 +37,12 @@
 /**************************** ESTRUCTURAS ********************************************************/
 typedef struct
 {
-    int cantLineasIni;//13
-    int cantLineasPelicula;//14
-    int cantLineasFin;//8
-    char codigoFuente[1000*PELICULA_CANT_MAX];
-    char inicioDePagina[500];
-    char finDePagina[300];
+   int cantLineasIni;//13
+   int cantLineasPelicula;//14
+   int cantLineasFin;//8
+   char codigoFuente[1000*PELICULA_CANT_MAX];
+   char inicioDePagina[500];
+   char finDePagina[300];
 }eArchivoHtml;
 
 /**************************** INICIALIZACIONES ***************************************************/

@@ -10,19 +10,19 @@
 /**************************** BUSQUEDA ***********************************************************/
 int buscarEnArrayInt(int array[], int limite, int buscar)
 {
-    int retorno = -1;
-    int i;
+   int retorno = -1;
+   int i;
 
-    for(i=0 ; i<limite ; i++)
-    {
-        if(array[i] == buscar)
-        {
-            retorno = i;
-            break;
-        }
-    }
+   for(i=0 ; i<limite ; i++)
+   {
+      if(array[i] == buscar)
+      {
+         retorno = i;
+         break;
+      }
+   }
 
-    return retorno;
+   return retorno;
 }
 //-----------------------------------------------------------------------------------------------//
 
@@ -30,113 +30,113 @@ int buscarEnArrayInt(int array[], int limite, int buscar)
 /**************************** ENTRADA DE DATOS ***************************************************/
 char pedirConfirmacion(char* mensajeAlUsuario)
 {
-    char retorno;
+   char retorno;
 
-    printf("\n%s (S/N): ", mensajeAlUsuario);
-    fflush(stdin);
-    scanf("%c", &retorno);
+   printf("\n%s (S/N): ", mensajeAlUsuario);
+   fflush(stdin);
+   scanf("%c", &retorno);
 
-    do
-    {
-        switch(retorno)
-        {
-            case 'S':
-            case 's':
-                retorno = 'S';
-                break;
-            case 'N':
-            case 'n':
-                retorno = 'N';
-                break;
-            default:
-                printf("\nPor favor ingrese 'S' o 'N': ");
-                fflush(stdin);
-                scanf("%c", &retorno);
-                break;
-        }
-    }
-    while(retorno != 'S' && retorno != 'N');
+   do
+   {
+      switch(retorno)
+      {
+         case 'S':
+         case 's':
+            retorno = 'S';
+            break;
+         case 'N':
+         case 'n':
+            retorno = 'N';
+            break;
+         default:
+            printf("\nPor favor ingrese 'S' o 'N': ");
+            fflush(stdin);
+            scanf("%c", &retorno);
+            break;
+      }
+   }
+   while(retorno != 'S' && retorno != 'N');
 
-    return retorno;
+   return retorno;
 }
 //-----------------------------------------------------------------------------------------------//
 void pausa()
 {
-    ejecutarEnConsola(HACER_PAUSA);
+   ejecutarEnConsola(HACER_PAUSA);
 }
 
 int pedirInt(char* mensajeIngreso)
 {
-    int retorno;
+   int retorno;
 
-    printf("%s", mensajeIngreso);
-    fflush(stdin);
-    scanf("%d", &retorno);
+   printf("%s", mensajeIngreso);
+   fflush(stdin);
+   scanf("%d", &retorno);
 
 
-    return retorno;
+   return retorno;
 }
 //-----------------------------------------------------------------------------------------------//
 int pedirIntValido(char* mensajeIngreso, char* mensajeReingreso, int limiteInferior, int limiteSuperior)
 {
-    int retorno;
+   int retorno;
 
-    retorno = pedirInt(mensajeIngreso);
+   retorno = pedirInt(mensajeIngreso);
 
-    while(retorno < limiteInferior || retorno > limiteSuperior)
-    {
-        retorno = pedirFloat(mensajeReingreso);
-    }
+   while(retorno < limiteInferior || retorno > limiteSuperior)
+   {
+      retorno = pedirFloat(mensajeReingreso);
+   }
 
-    return retorno;
+   return retorno;
 }
 //-----------------------------------------------------------------------------------------------//
 float pedirFloat(char* mensajeIngreso)
 {
-    float retorno;
+   float retorno;
 
-    printf("%s", mensajeIngreso);
-    fflush(stdin);
-    scanf("%f", &retorno);
+   printf("%s", mensajeIngreso);
+   fflush(stdin);
+   scanf("%f", &retorno);
 
 
-    return retorno;
+   return retorno;
 }
 //-----------------------------------------------------------------------------------------------//
 float pedirFloatValido(char* mensajeIngreso, char* mensajeReingreso, float limiteInferior, float limiteSuperior)
 {
-    float retorno;
+   float retorno;
 
-    retorno = pedirFloat(mensajeIngreso);
+   retorno = pedirFloat(mensajeIngreso);
 
-    while(retorno < limiteInferior || retorno > limiteSuperior)
-    {
-        retorno = pedirFloat(mensajeReingreso);
-    }
+   while(retorno < limiteInferior || retorno > limiteSuperior)
+   {
+      retorno = pedirFloat(mensajeReingreso);
+   }
 
-    return retorno;
+   return retorno;
 }
 //-----------------------------------------------------------------------------------------------//
 void pedirString(char retorno[], char* mensajeIngreso)
 {
-    printf("%s", mensajeIngreso);
-    fflush(stdin);
-    gets(retorno);
+   printf("%s", mensajeIngreso);
+   fflush(stdin);
+   gets(retorno);
 }
 //-----------------------------------------------------------------------------------------------//
 void pedirStringValido(char retorno[], char* mensajeIngreso, char* mensajeReingreso, int limite)
 {
-    char stringIngresado[STRING_LARGO_MAX];
+   char stringIngresado[STRING_LARGO_MAX];
 
-    pedirString(stringIngresado, mensajeIngreso);
+   pedirString(stringIngresado, mensajeIngreso);
 
-    while(strlen(stringIngresado) > limite)
-    {
-        printf("\nEl texto ingresado supera el l°mite de %d caracteres establecido.", limite);
-        pedirString(stringIngresado, mensajeIngreso);
-    }
+   while(strlen(stringIngresado) > limite)
+   {
+      printf("\nEl texto ingresado supera el l°mite de %d caracteres establecido.", limite);
+      pedirString(stringIngresado, mensajeIngreso);
+   }
 
-    strcpy(retorno, stringIngresado);
+   strcpy(retorno, stringIngresado);
 }
 //-----------------------------------------------------------------------------------------------//
 
@@ -144,57 +144,57 @@ void pedirStringValido(char retorno[], char* mensajeIngreso, char* mensajeReingr
 /**************************** LISTADO DE DATOS ***************************************************/
 void generarTitulo(char texto[])
 {
-    int i;
-    char nuevoTitulo[TITULO_LARGO_MAX] = "∫ ";
+   int i;
+   char nuevoTitulo[TITULO_LARGO_MAX] = "∫ ";
 
-    strcat(nuevoTitulo, texto);
-    strcat(nuevoTitulo, " ∫");
+   strcat(nuevoTitulo, texto);
+   strcat(nuevoTitulo, " ∫");
 
-    strcpy(texto, "\n…");
-    for(i=0 ; i<strlen(nuevoTitulo)-2 ; i++)
-    {
-        strcat(texto, "Õ");
-    }
-    strcat(texto, "ª\n");
+   strcpy(texto, "\n…");
+   for(i=0 ; i<strlen(nuevoTitulo)-2 ; i++)
+   {
+      strcat(texto, "Õ");
+   }
+   strcat(texto, "ª\n");
 
-    strcat(texto, nuevoTitulo);
+   strcat(texto, nuevoTitulo);
 
-    strcat(texto, "\n»");
-    for(i=0 ; i<strlen(nuevoTitulo)-2 ; i++)
-    {
-        strcat(texto, "Õ");
-    }
-    strcat(texto, "º");
+   strcat(texto, "\n»");
+   for(i=0 ; i<strlen(nuevoTitulo)-2 ; i++)
+   {
+      strcat(texto, "Õ");
+   }
+   strcat(texto, "º");
 
 }
 //-----------------------------------------------------------------------------------------------//
 void imprimirEnPantalla(char texto[])
 {
-    printf("%s", texto);
+   printf("%s", texto);
 }
 //-----------------------------------------------------------------------------------------------//
 void imprimirTitulo(char texto[])
 {
-    char titulo[TITULO_LARGO_MAX];
-    strcpy(titulo, texto);
-    generarTitulo(titulo);
-    imprimirEnPantalla(titulo);
+   char titulo[TITULO_LARGO_MAX];
+   strcpy(titulo, texto);
+   generarTitulo(titulo);
+   imprimirEnPantalla(titulo);
 }
 //-----------------------------------------------------------------------------------------------//
 void limpiarPantalla()
 {
-    ejecutarEnConsola(LIMPIAR_PANTALLA);
+   ejecutarEnConsola(LIMPIAR_PANTALLA);
 }
 //-----------------------------------------------------------------------------------------------//
 void limpiarPantallaYMostrarTitulo(char texto[])
 {
-    ejecutarEnConsola(LIMPIAR_PANTALLA);
-    imprimirTitulo(texto);
+   ejecutarEnConsola(LIMPIAR_PANTALLA);
+   imprimirTitulo(texto);
 }
 //-----------------------------------------------------------------------------------------------//
 void saltoDeLinea()
 {
-    imprimirEnPantalla("\n");
+   imprimirEnPantalla("\n");
 }
 //-----------------------------------------------------------------------------------------------//
 
@@ -202,40 +202,40 @@ void saltoDeLinea()
 /**************************** GESTION DE DATOS ***************************************************/
 void ejecutarEnConsola(char* lineaDeComando)
 {
-    printf("\n");
-    system(lineaDeComando);
+   printf("\n");
+   system(lineaDeComando);
 }
 //-----------------------------------------------------------------------------------------------//
 char* intToChar(int numero)
 {
-    char cadena[STRING_LARGO_MAX];
-    char* retorno;
+   char cadena[STRING_LARGO_MAX];
+   char* retorno;
 
-    retorno = cadena;
+   retorno = cadena;
 
-    sprintf(retorno, "%d", numero);
+   sprintf(retorno, "%d", numero);
 
-    return retorno;
+   return retorno;
 }
 //-----------------------------------------------------------------------------------------------//
 char* floatToChar(float numero)
 {
-    char cadena[STRING_LARGO_MAX];
-    char* retorno;
+   char cadena[STRING_LARGO_MAX];
+   char* retorno;
 
-    retorno = cadena;
+   retorno = cadena;
 
-    sprintf(retorno, "%.2f", numero);
+   sprintf(retorno, "%.2f", numero);
 
-    return retorno;
+   return retorno;
 }
 //-----------------------------------------------------------------------------------------------//
 float calcularPromedio(float numero1, float numero2)
 {
-    float retorno;
+   float retorno;
 
-    retorno = (numero1 + numero2) / 2;
+   retorno = (numero1 + numero2) / 2;
 
-    return retorno;
+   return retorno;
 }
 //-----------------------------------------------------------------------------------------------//

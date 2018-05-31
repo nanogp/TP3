@@ -82,15 +82,15 @@
 
 /**************************** ESTRUCTURAS ********************************************************/
 typedef struct{
-    char titulo[PELICULA_LARGO_TITULO];
-    char genero[PELICULA_LARGO_GENERO];
-    int duracion;
-    char descripcion[PELICULA_LARGO_DESCRIPCION];
-    int puntaje;
-    char linkImagen[PELICULA_LARGO_LINK];
-    //-------------------------
-    int idPelicula;
-    int estado;
+   char titulo[PELICULA_LARGO_TITULO];
+   char genero[PELICULA_LARGO_GENERO];
+   int duracion;
+   char descripcion[PELICULA_LARGO_DESCRIPCION];
+   int puntaje;
+   char linkImagen[PELICULA_LARGO_LINK];
+   //-------------------------
+   int idPelicula;
+   int estado;
 }eMovie;
 
 

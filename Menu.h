@@ -11,10 +11,10 @@
 /**************************** ESTRUCTURAS ********************************************************/
 typedef struct
 {
-    int limiteOpciones;
-    int codigos[MENU_CANT_MAX];
-    char descripciones[MENU_CANT_MAX][MENU_LARGO_DESCRIPCION];
-    char titulo[MENU_LARGO_TITULO];
+   int limiteOpciones;
+   int codigos[MENU_CANT_MAX];
+   char descripciones[MENU_CANT_MAX][MENU_LARGO_DESCRIPCION];
+   char titulo[MENU_LARGO_TITULO];
 } eMenu;
 
 
