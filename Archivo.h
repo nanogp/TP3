@@ -31,14 +31,6 @@
 #define ARCHIVO_HTML_MSJ_INGRESE_NOMBRE "\nIngrese el nombre para el archivo web (.html): "
 #define ARCHIVO_HTML_MSJ_REINGRESE_NOMBRE "\nReingrese el nombre para el archivo web (.html): "
 
-/**************************** LISTADOS ***********************************************************/
-
-/**************************** ORDENAMIENTO *******************************************************/
-
-/**************************** MENUS **************************************************************/
-
-/**************************** ESTRUCTURAS ********************************************************/
-
 /**************************** INICIALIZACIONES ***************************************************/
 /** \brief inicializo el archivo con datos en caso de que no exista
  *
@@ -74,7 +66,7 @@ int eArchivoHtml_generarCodigoHtmlPelicula(char* htmlPelicula, eMovie* pelicula)
  * \return void
  *
  */
-void eArchivoHtml_pedirRutaArchivo(char** retorno);
+void eArchivoHtml_pedirNombreArchivo(char** retorno);
 //-----------------------------------------------------------------------------------------------//
 /** \brief escribe un archivo html en disco con el codigo recibido por parametro
  *
