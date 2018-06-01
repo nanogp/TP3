@@ -181,23 +181,23 @@ int eMovie_obtenerCantidadElementos(eMovie* listadoPeliculas, int limitePelicula
 
 
 /**************************** ENTRADA DE DATOS ***************************************************/
-/** \brief
+/** \brief solicita al usuario que ingrese un Id válido para una película y lo devuelve
  *
- * \return int
+ * \return int el Id validado
  *
  */
 int eMovie_pedirId();
 //-----------------------------------------------------------------------------------------------//
-/** \brief
+/** \brief solicita al usuario que ingrese una duración válida para una película y la devuelve
  *
- * \return int
+ * \return int la duración validada
  *
  */
 int eMovie_pedirDuracion();
 //-----------------------------------------------------------------------------------------------//
-/** \brief
+/** \brief solicita al usuario que ingrese un puntaje válido para una película y lo devuelve
  *
- * \return int
+ * \return int el puntaje validado
  *
  */
 int eMovie_pedirPuntaje();

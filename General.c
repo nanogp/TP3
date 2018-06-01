@@ -117,6 +117,20 @@ float pedirFloatValido(char* mensajeIngreso, char* mensajeReingreso, float limit
    return retorno;
 }
 //-----------------------------------------------------------------------------------------------//
+int constructorString(char** string, int limite)
+{
+   int retorno = -1;
+
+   *string = (char*) malloc(sizeof(char)*limite);
+
+   if(string !=NULL)
+   {
+      retorno = 0;
+   }
+
+   return retorno;
+}
+//-----------------------------------------------------------------------------------------------//
 void pedirString(char* retorno, char* mensajeIngreso)
 {
    printf("%s", mensajeIngreso);
@@ -124,34 +138,47 @@ void pedirString(char* retorno, char* mensajeIngreso)
    gets(retorno);
 }
 //-----------------------------------------------------------------------------------------------//
-void pedirStringValido(char* retorno, char* mensajeIngreso, char* mensajeReingreso, int limite)
+int pedirStringValido(char** stringValido, char* mensajeIngreso, char* mensajeReingreso, int limite)
 {
-   char stringIngresado[STRING_LARGO_MAX];
+   int retorno = -1;
+   int longitud;
    char valido = 'N';
+   char* stringValidar;
 
-   pedirString(stringIngresado, mensajeIngreso);
+   constructorString(&stringValidar, limite+5);
+   constructorString(stringValido, limite);
+
+   if(stringValidar !=NULL && stringValido != NULL)
+   {
+      retorno = 0;
+   }
+
+   pedirString(stringValidar, mensajeIngreso);
 
    do
    {
-      if(strlen(stringIngresado) > limite)
+      longitud = strlen(stringValidar);
+
+      if(longitud > limite)
       {
          printf("\nEl texto ingresado supera el l¡mite de %d caracteres establecido.", limite);
-         pedirString(stringIngresado, mensajeReingreso);
+         pedirString(stringValidar, mensajeIngreso);
       }
-      else if(strlen(stringIngresado) == 0)
+      else if(longitud == 0)
       {
          printf("\nEl texto ingresado no puede estar vacio. Ingrese al menos 1 caracter.");
-         pedirString(stringIngresado, mensajeReingreso);
+         pedirString(stringValidar, mensajeIngreso);
       }
       else
       {
          valido = 'S';
+         strncpy(*stringValido, stringValidar, sizeof(char)*limite);
       }
 
-   }while(valido == 'N');
+   }
+   while(valido == 'N');
 
-   //copio cadena ingresada en el retorno
-   strcpy(retorno, stringIngresado);
+   return retorno;
 }
 //-----------------------------------------------------------------------------------------------//
 
@@ -253,4 +280,6 @@ float calcularPromedio(float numero1, float numero2)
 
    return retorno;
 }
+//-----------------------------------------------------------------------------------------------//
+
 //-----------------------------------------------------------------------------------------------//
