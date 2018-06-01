@@ -13,7 +13,7 @@ void eArchivoBinario_initHardcode(eMovie* listadoPeliculas)
 {
    FILE* pArchivo;
 
-   pArchivo = fopen(ARCHIVO_BINARIO_RUTA, ARCHIVO_BINARIO_LECTURA);
+   pArchivo = fopen(ARCHIVO_BINARIO_NOMBRE, ARCHIVO_BINARIO_LECTURA);
 
    //SOLO SI EL ARCHIVO NO EXISTE, GENERO UNO CON DATOS DE PRUEBA HARDCODEADOS
    //ASI SE MANTIENEN LOS DATOS QUE YA ESTAN GUARDADOS EN EL ARCHIVO
@@ -21,7 +21,7 @@ void eArchivoBinario_initHardcode(eMovie* listadoPeliculas)
    {
       eMovie_initHardcode(listadoPeliculas);
 
-      pArchivo = fopen(ARCHIVO_BINARIO_RUTA, ARCHIVO_BINARIO_ESCRITURA);
+      pArchivo = fopen(ARCHIVO_BINARIO_NOMBRE, ARCHIVO_BINARIO_ESCRITURA);
 
       if(pArchivo == NULL)
       {
@@ -30,7 +30,7 @@ void eArchivoBinario_initHardcode(eMovie* listadoPeliculas)
       }
       else
       {
-         eArchivoBinario_escribir(ARCHIVO_BINARIO_RUTA, listadoPeliculas, PELICULA_CANT_MAX);
+         eArchivoBinario_escribir(ARCHIVO_BINARIO_NOMBRE, listadoPeliculas, PELICULA_CANT_MAX);
       }
    }
 }
@@ -97,12 +97,17 @@ int eArchivoHtml_generarCodigoHtmlPelicula(char* htmlPelicula, eMovie* pelicula)
    return retorno;
 }
 //-----------------------------------------------------------------------------------------------//
-int eArchivoHtml_escribirArchivoHtml(char* codigoHtml)
+void eArchivoHtml_pedirRutaArchivo(char** retorno)
+{
+   constructorStringParametrizado(retorno, ARCHIVO_HTML_MSJ_INGRESE_NOMBRE, ARCHIVO_HTML_MSJ_REINGRESE_NOMBRE, ARCHIVO_HTML_LARGO_NOMBRE);
+}
+//-----------------------------------------------------------------------------------------------//
+int eArchivoHtml_escribirArchivoHtml(char* nombreArchivo, char* codigoHtml)
 {
    int retorno = -1;
    FILE* pArchivo;
 
-   pArchivo = fopen(ARCHIVO_HTML_RUTA, ARCHIVO_HTML_ESCRITURA);
+   pArchivo = fopen(nombreArchivo, ARCHIVO_HTML_ESCRITURA);
 
    if(pArchivo != NULL)
    {
@@ -120,6 +125,7 @@ int eArchivoHtml_generarWeb(eMovie* listadoPeliculas, int limitePeliculas)
    int retorno = -1;
    int i;
    char* codigoHtml = NULL;
+   char* nombreArchivo = NULL;
 
    if(listadoPeliculas != NULL && limitePeliculas > 0)
    {
@@ -165,11 +171,18 @@ int eArchivoHtml_generarWeb(eMovie* listadoPeliculas, int limitePeliculas)
                             "</body>\n"
                             "</html>\n");
 
-         //llamo a escribir el archivo en disco con el codigo generado
-         eArchivoHtml_escribirArchivoHtml(codigoHtml);
+        eArchivoHtml_pedirRutaArchivo(&nombreArchivo);
 
-         imprimirEnPantalla(ARCHIVO_MSJ_HTML_OK);
-         imprimirEnPantalla(ARCHIVO_HTML_RUTA);
+         //llamo a escribir el archivo en disco con el codigo generado
+         if(eArchivoHtml_escribirArchivoHtml(nombreArchivo, codigoHtml) == 0)
+         {
+             imprimirEnPantalla(ARCHIVO_MSJ_HTML_OK);
+             imprimirEnPantalla(nombreArchivo);
+         }
+         else
+         {
+             imprimirEnPantalla(ARCHIVO_MSJ_HTML_ERROR);
+         }
       }
    }
 
@@ -180,7 +193,7 @@ int eArchivoHtml_generarWeb(eMovie* listadoPeliculas, int limitePeliculas)
 
 
 /**************************** GESTION ARCHIVO BINARIO ********************************************/
-int eArchivoBinario_leer(char* rutaArchivo, eMovie* listadoPeliculas, int limitePeliculas)
+int eArchivoBinario_leer(char* nombreArchivo, eMovie* listadoPeliculas, int limitePeliculas)
 {
    int retorno = -1; //error en listadoPeliculas
    int cantidadDeRegistros;
@@ -190,7 +203,7 @@ int eArchivoBinario_leer(char* rutaArchivo, eMovie* listadoPeliculas, int limite
    {
       retorno = -2; //error en archivo
 
-      pArchivo = fopen(rutaArchivo, ARCHIVO_BINARIO_LECTURA);
+      pArchivo = fopen(nombreArchivo, ARCHIVO_BINARIO_LECTURA);
 
       if(pArchivo != NULL)
       {
@@ -211,7 +224,7 @@ int eArchivoBinario_leer(char* rutaArchivo, eMovie* listadoPeliculas, int limite
    return retorno;
 }
 //-----------------------------------------------------------------------------------------------//
-int eArchivoBinario_escribir(char* rutaArchivo, eMovie* listadoPeliculas, int limitePeliculas)
+int eArchivoBinario_escribir(char* nombreArchivo, eMovie* listadoPeliculas, int limitePeliculas)
 {
    int retorno = -1; //error en listadoPeliculas
    int cantidadDeRegistros;
@@ -222,7 +235,7 @@ int eArchivoBinario_escribir(char* rutaArchivo, eMovie* listadoPeliculas, int li
    {
       retorno = -2; //error en archivo
 
-      pArchivo = fopen(rutaArchivo, ARCHIVO_BINARIO_ESCRITURA);
+      pArchivo = fopen(nombreArchivo, ARCHIVO_BINARIO_ESCRITURA);
 
       if(pArchivo != NULL)
       {

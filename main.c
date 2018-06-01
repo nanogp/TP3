@@ -33,7 +33,7 @@ int main()
 
    /************************ INICIALIZACION ******************************************************/
    eMovie_init(listadoPeliculas, PELICULA_CANT_MAX);
-   eArchivoBinario_leer(ARCHIVO_BINARIO_RUTA, listadoPeliculas, PELICULA_CANT_MAX);
+   eArchivoBinario_leer(ARCHIVO_BINARIO_NOMBRE, listadoPeliculas, PELICULA_CANT_MAX);
 
    /************************ GENERAR DATOS POR HARDCODE PARA DEBUG *******************************/
    /************************ (SOLO SI EL ARCHIVO BINARIO NO EXISTE) ******************************/
@@ -49,17 +49,17 @@ int main()
          case 1:
             /************ ALTA *******************************************************************/
             eMovie_alta(listadoPeliculas, PELICULA_CANT_MAX);
-            eArchivoBinario_escribir(ARCHIVO_BINARIO_RUTA, listadoPeliculas, PELICULA_CANT_MAX);
+            eArchivoBinario_escribir(ARCHIVO_BINARIO_NOMBRE, listadoPeliculas, PELICULA_CANT_MAX);
             break;
          case 2:
             /************ BAJA *******************************************************************/
             eMovie_baja(listadoPeliculas, PELICULA_CANT_MAX);
-            eArchivoBinario_escribir(ARCHIVO_BINARIO_RUTA, listadoPeliculas, PELICULA_CANT_MAX);
+            eArchivoBinario_escribir(ARCHIVO_BINARIO_NOMBRE, listadoPeliculas, PELICULA_CANT_MAX);
             break;
          case 3:
             /************ MODIFICACION ***********************************************************/
             eMovie_modificacion(listadoPeliculas, PELICULA_CANT_MAX);
-            eArchivoBinario_escribir(ARCHIVO_BINARIO_RUTA, listadoPeliculas, PELICULA_CANT_MAX);
+            eArchivoBinario_escribir(ARCHIVO_BINARIO_NOMBRE, listadoPeliculas, PELICULA_CANT_MAX);
             break;
          case 4:
             /************ LISTADO WEB ************************************************************/

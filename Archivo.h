@@ -6,10 +6,11 @@
 #include "Pelicula.h"
 
 /**************************** LIMITES ************************************************************/
+#define ARCHIVO_HTML_LARGO_NOMBRE 255
 
 /**************************** CONSTANTES *********************************************************/
-#define ARCHIVO_HTML_RUTA "index.html"
-#define ARCHIVO_BINARIO_RUTA "Listado_Peliculas.dat"
+#define ARCHIVO_HTML_NOMBRE "index.html"
+#define ARCHIVO_BINARIO_NOMBRE "Listado_Peliculas.dat"
 #define ARCHIVO_HTML_LECTURA "r"
 #define ARCHIVO_BINARIO_LECTURA "rb"
 #define ARCHIVO_HTML_ESCRITURA "w"
@@ -22,11 +23,13 @@
 #define ARCHIVO_GENERAR_WEB_TITULO "GENERAR PAGINA WEB"
 
 /**************************** MENSAJES ERROR *****************************************************/
-
+#define ARCHIVO_MSJ_HTML_ERROR "\n\nNo se pudo genera la p gina web en el nombre de archivo ingresado.\nVerifique su validez y reintente"
 /**************************** MENSAJES INFO ******************************************************/
 #define ARCHIVO_MSJ_HTML_OK "\n\nSe gener¢ la p gina web en el archivo: "
 
 /**************************** MENSAJES INPUT *****************************************************/
+#define ARCHIVO_HTML_MSJ_INGRESE_NOMBRE "\nIngrese el nombre para el archivo web (.html): "
+#define ARCHIVO_HTML_MSJ_REINGRESE_NOMBRE "\nReingrese el nombre para el archivo web (.html): "
 
 /**************************** LISTADOS ***********************************************************/
 
@@ -65,13 +68,22 @@ int eArchivoHtml_generarCodigoHtmlPelicula(char* htmlPelicula, eMovie* pelicula)
 
 
 /**************************** GESTION ARCHIVO HTML ***********************************************/
+/** \brief solicita al usuario que ingrese un nombre válida para generar la web y la asigna a un puntero
+ *
+ * \param retorno char* la direccion del puntero para guardar el nombre validado
+ * \return void
+ *
+ */
+void eArchivoHtml_pedirRutaArchivo(char** retorno);
+//-----------------------------------------------------------------------------------------------//
 /** \brief escribe un archivo html en disco con el codigo recibido por parametro
  *
+ * \param nombreArchivo char* el nombre del archivo a generar
  * \param codigoHtml char* el codigo fuente a escribir en el archivo
  * \return int devuelve cero si no hubo ningun error
  *
  */
-int eArchivoHtml_escribirArchivoHtml(char* codigoHtml);
+int eArchivoHtml_escribirArchivoHtml(char* nombreArchivo, char* codigoHtml);
 //-----------------------------------------------------------------------------------------------//
 /** \brief genera un archivo html en disco con el listado de peliculas recibido
  *
@@ -87,22 +99,22 @@ int eArchivoHtml_generarWeb(eMovie* listadoPeliculas, int limitePeliculas);
 /**************************** GESTION ARCHIVO BINARIO ********************************************/
 /** \brief lee un archivo binario con un listado de peliculas y lo carga en memoria
  *
- * \param rutaArchivo char* ruta al archivo binario
+ * \param nombreArchivo char* ruta al archivo binario
  * \param listadoPeliculas eMovie* un array para guardar el listado que contiene el archivo
  * \param limitePeliculas int cantidad maxima de elementos en el listado
  * \return int devuelve cero si no hubo ningun error
  *
  */
-int eArchivoBinario_leer(char* rutaArchivo, eMovie* listadoPeliculas, int limitePeliculas);
+int eArchivoBinario_leer(char* nombreArchivo, eMovie* listadoPeliculas, int limitePeliculas);
 //-----------------------------------------------------------------------------------------------//
 /** \brief escribe un archivo binario con el listado de peliculas en memoria
  *
- * \param rutaArchivo char* ruta al archivo binario
+ * \param nombreArchivo char* ruta al archivo binario
  * \param listadoPeliculas eMovie* el listado de peliculas a guardar en el archivo
  * \param limitePeliculas int cantidad maxima de elementos en el listado
  * \return int devuelve cero si no hubo ningun error
  *
  */
-int eArchivoBinario_escribir(char* rutaArchivo, eMovie* listadoPeliculas, int limitePeliculas);
+int eArchivoBinario_escribir(char* nombreArchivo, eMovie* listadoPeliculas, int limitePeliculas);
 //-----------------------------------------------------------------------------------------------//
 #endif // ARCHIVO_H_INCLUDED

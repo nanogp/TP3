@@ -131,14 +131,7 @@ int constructorString(char** string, int limite)
    return retorno;
 }
 //-----------------------------------------------------------------------------------------------//
-void pedirString(char* retorno, char* mensajeIngreso)
-{
-   printf("%s", mensajeIngreso);
-   fflush(stdin);
-   gets(retorno);
-}
-//-----------------------------------------------------------------------------------------------//
-int pedirStringValido(char** stringValido, char* mensajeIngreso, char* mensajeReingreso, int limite)
+int constructorStringParametrizado(char** stringValido, char* mensajeIngreso, char* mensajeReingreso, int limite)
 {
    int retorno = -1;
    int longitud;
@@ -173,6 +166,55 @@ int pedirStringValido(char** stringValido, char* mensajeIngreso, char* mensajeRe
       {
          valido = 'S';
          strncpy(*stringValido, stringValidar, sizeof(char)*limite);
+      }
+
+   }
+   while(valido == 'N');
+
+   return retorno;
+}
+//-----------------------------------------------------------------------------------------------//
+void pedirString(char* retorno, char* mensajeIngreso)
+{
+   printf("%s", mensajeIngreso);
+   fflush(stdin);
+   gets(retorno);
+}
+//-----------------------------------------------------------------------------------------------//
+int pedirStringValido(char* stringValido, char* mensajeIngreso, char* mensajeReingreso, int limite)
+{
+   int retorno = -1;
+   int longitud;
+   char valido = 'N';
+   char* stringValidar;
+
+   constructorString(&stringValidar, limite+5);
+
+   if(stringValidar !=NULL && stringValido != NULL)
+   {
+      retorno = 0;
+   }
+
+   pedirString(stringValidar, mensajeIngreso);
+
+   do
+   {
+      longitud = strlen(stringValidar);
+
+      if(longitud > limite)
+      {
+         printf("\nEl texto ingresado supera el l¡mite de %d caracteres establecido.", limite);
+         pedirString(stringValidar, mensajeIngreso);
+      }
+      else if(longitud == 0)
+      {
+         printf("\nEl texto ingresado no puede estar vacio. Ingrese al menos 1 caracter.");
+         pedirString(stringValidar, mensajeIngreso);
+      }
+      else
+      {
+         valido = 'S';
+         strncpy(stringValido, stringValidar, sizeof(char)*limite);
       }
 
    }

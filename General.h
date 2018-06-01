@@ -99,6 +99,17 @@ float pedirFloatValido(char*, char*, float, float);
  */
 int constructorString(char** string, int limite);
 //-----------------------------------------------------------------------------------------------//
+/** \brief pide memoria para una cadena de texto y su ingreso validado
+ *
+ * \param stringValido char*: direccion del puntero a char donde se retorna la cadena ingresada
+ * \param mensajeIngreso char* : el mensaje al usuario
+ * \param mensajeReingreso char* : el mensaje al usuario en caso de error
+ * \param limite int: el límite para la cantidad de caracteres
+ * \return int devuelve cero si no hubo error
+ *
+ */
+int constructorStringParametrizado(char** stringValido, char* mensajeIngreso, char* mensajeReingreso, int limite);
+//-----------------------------------------------------------------------------------------------//
 /** \brief pide que se ingrese una cadena de texto y la asigna a una variable
  *
  * \param retorno char*: la variable donde se retorna la cadena ingresada
@@ -110,14 +121,14 @@ void pedirString(char*, char*);
 //-----------------------------------------------------------------------------------------------//
 /** \brief pide que se ingrese una cadena de texto, valida su tamaño y la asigna a una variable
  *
- * \param stringValido char*: direccion del puntero a char donde se retorna la cadena ingresada
+ * \param stringValido char*: puntero a char donde se retorna la cadena ingresada
  * \param mensajeIngreso char* : el mensaje al usuario
  * \param mensajeReingreso char* : el mensaje al usuario en caso de error
  * \param limite int: el límite para la cantidad de caracteres
  * \return int devuelve cero si no hubo error
  *
  */
-int pedirStringValido(char** stringValido, char* mensajeIngreso, char* mensajeReingreso, int limite);
+int pedirStringValido(char* stringValido, char* mensajeIngreso, char* mensajeReingreso, int limite);
 //-----------------------------------------------------------------------------------------------//
 
 

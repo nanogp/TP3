@@ -44,8 +44,8 @@
 #define PELICULA_MSJ_BAJA_OK "\nLa Pelicula se dio de baja"
 #define PELICULA_MSJ_MODIFICACION_SIN_CAMBIOS "\nNo hubo cambio alguno"
 #define PELICULA_MSJ_MODIFICACION_OK "\nLa Pelicula se modifico"
-#define PELICULA_MSJ_REGISTRO_ACTUAL "\n\nREGISTRO DE PELICULA ACTUAL:\n컴컴컴컴컴컴컴컴컴컴컴컴컴컴"
-#define PELICULA_MSJ_REGISTRO_MODIFICADO "\n\nREGISTRO MODIFICADO:\n컴컴컴컴컴컴컴컴컴컴"
+#define PELICULA_MSJ_REGISTRO_ACTUAL "\n\nREGISTRO DE PELICULA ACTUAL:\n----------------------------"
+#define PELICULA_MSJ_REGISTRO_MODIFICADO "\n\nREGISTRO MODIFICADO:\n--------------------"
 
 /**************************** MENSAJES INPUT *****************************************************/
 #define PELICULA_MSJ_INGRESE_ID "\n\nIngrese el ID de Pelicula: "
@@ -136,7 +136,7 @@ int eMovie_siguienteId(eMovie* listadoPeliculas, int limitePeliculas);
  *
  * \param listadoPeliculas eMovie* la variable donde se guarda el listado
  * \param limitePeliculas int la cantidad maxima de elementos del listado
- * \return int devuelve 1 si esta vacío, 0 si esta ocupado y -1 si hubo error
+ * \return int devuelve 1 si esta vac�o, 0 si esta ocupado y -1 si hubo error
  *
  */
 int eMovie_estaVacio(eMovie* listadoPeliculas, int limitePeliculas);
@@ -181,64 +181,64 @@ int eMovie_obtenerCantidadElementos(eMovie* listadoPeliculas, int limitePelicula
 
 
 /**************************** ENTRADA DE DATOS ***************************************************/
-/** \brief solicita al usuario que ingrese un Id válido para una película y lo devuelve
+/** \brief solicita al usuario que ingrese un Id v�lido para una pel�cula y lo devuelve
  *
  * \return int el Id validado
  *
  */
 int eMovie_pedirId();
 //-----------------------------------------------------------------------------------------------//
-/** \brief solicita al usuario que ingrese una duración válida para una película y la devuelve
+/** \brief solicita al usuario que ingrese una duraci�n v�lida para una pel�cula y la devuelve
  *
- * \return int la duración validada
+ * \return int la duraci�n validada
  *
  */
 int eMovie_pedirDuracion();
 //-----------------------------------------------------------------------------------------------//
-/** \brief solicita al usuario que ingrese un puntaje válido para una película y lo devuelve
+/** \brief solicita al usuario que ingrese un puntaje v�lido para una pel�cula y lo devuelve
  *
  * \return int el puntaje validado
  *
  */
 int eMovie_pedirPuntaje();
 //-----------------------------------------------------------------------------------------------//
-/** \brief
+/** \brief solicita al usuario que ingrese un titulo v�lido para una pel�cula y lo asigna a un puntero
  *
- * \param retorno char*
+ * \param retorno char* el titulo validado
  * \return void
  *
  */
-void eMovie_pedirTitulo(char* retorno);
+void eArchivoHtml_pedirTitulo(char* retorno);
 //-----------------------------------------------------------------------------------------------//
-/** \brief
+/** \brief solicita al usuario que ingrese un genero v�lido para una pel�cula y lo asigna a un puntero
  *
- * \param retorno char*
+ * \param retorno char* el genero validado
  * \return void
  *
  */
 void eMovie_pedirGenero(char* retorno);
 //-----------------------------------------------------------------------------------------------//
-/** \brief
+/** \brief solicita al usuario que ingrese una descripcion v�lida para una pel�cula y la asigna a un puntero
  *
- * \param retorno char*
+ * \param retorno char* la descripcion validada
  * \return void
  *
  */
 void eMovie_pedirDescripcion(char* retorno);
 //-----------------------------------------------------------------------------------------------//
-/** \brief
+/** \brief solicita al usuario que ingrese un link v�lido para una pel�cula y lo asigna a un puntero
  *
- * \param retorno char*
+ * \param retorno char* el titulo validado
  * \return void
  *
  */
 void eMovie_pedirLinkImagen(char* retorno);
 //-----------------------------------------------------------------------------------------------//
-/** \brief
+/** \brief solicita al usuario que ingrese los datos de una pel�cula y devuelve dicho registro validado
  *
  * \param listadoPeliculas eMovie* la variable donde se guarda el listado
  * \param limitePeliculas int la cantidad maxima de elementos del listado
- * \return eMovie
+ * \return eMovie el registro de pelicula valida
  *
  */
 eMovie eMovie_pedirIngreso(eMovie* listadoPeliculas, int limitePeliculas);
@@ -246,23 +246,23 @@ eMovie eMovie_pedirIngreso(eMovie* listadoPeliculas, int limitePeliculas);
 
 
 /**************************** LISTADO DE DATOS ***************************************************/
-/** \brief
+/** \brief muestra una pelicula en pantalla
  *
- * \param pelicula eMovie*
- * \return int
+ * \param pelicula eMovie* un registro del tipo pelicula
+ * \return int devuelve cero si no hubo error
  *
  */
 int eMovie_mostrarUno(eMovie* pelicula);
 //-----------------------------------------------------------------------------------------------//
-/** \brief
+/** \brief muestra una pelicula con todos sus campos en pantalla
  *
- * \param pelicula eMovie*
- * \return int
+ * \param pelicula eMovie* un registro del tipo pelicula
+ * \return int devuelve cero si no hubo error
  *
  */
 int eMovie_mostrarUnoCompleto(eMovie* pelicula);
 //-----------------------------------------------------------------------------------------------//
-/** \brief
+/** \brief muestra el listado de peliculas en pantalla
  *
  * \param listadoPeliculas eMovie* la variable donde se guarda el listado
  * \param limitePeliculas int la cantidad maxima de elementos del listado
@@ -274,29 +274,29 @@ int eMovie_mostrarListado(eMovie* listadoPeliculas, int limitePeliculas);
 
 
 /**************************** GESTION DE DATOS ***************************************************/
-/** \brief
+/** \brief maneja el proceso de dar de alta una pelicula
  *
  * \param listadoPeliculas eMovie* la variable donde se guarda el listado
  * \param limitePeliculas int la cantidad maxima de elementos del listado
- * \return int
+ * \return int devuelve cero si no hubo error
  *
  */
 int eMovie_alta(eMovie* listadoPeliculas, int limitePeliculas);
 //-----------------------------------------------------------------------------------------------//
-/** \brief
+/** \brief maneja el proceso de modificar una pelicula
  *
  * \param listadoPeliculas eMovie* la variable donde se guarda el listado
  * \param limitePeliculas int la cantidad maxima de elementos del listado
- * \return int
+ * \return int devuelve cero si no hubo error
  *
  */
 int eMovie_modificacion(eMovie* listadoPeliculas, int limitePeliculas);
 //-----------------------------------------------------------------------------------------------//
-/** \brief
+/** \brief maneja el proceso de dar de baja una pelicula
  *
  * \param listadoPeliculas eMovie* la variable donde se guarda el listado
  * \param limitePeliculas int la cantidad maxima de elementos del listado
- * \return int
+ * \return int devuelve cero si no hubo error
  *
  */
 int eMovie_baja(eMovie* listadoPeliculas, int limitePeliculas);
@@ -304,12 +304,12 @@ int eMovie_baja(eMovie* listadoPeliculas, int limitePeliculas);
 
 
 /**************************** ORDENAMIENTO *******************************************************/
-/** \brief
+/** \brief ordenamiento por metodo burbuja del listado de peliculas, segun criterio recibido por parametro
  *
- * \param listado eMovie*
+ * \param listadoPeliculas eMovie* la variable donde se guarda el listado
  * \param limitePeliculas int la cantidad maxima de elementos del listado
- * \param orden char*
- * \return int
+ * \param orden char* el criterio de ordenamiento (ver seccion ORDENAMIENTO en los defines)
+ * \return int devuelve cero si no hubo error
  *
  */
 int eMovie_ordenar(eMovie* listado, int limitePeliculas, char* orden);

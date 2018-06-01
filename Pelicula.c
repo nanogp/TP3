@@ -224,22 +224,22 @@ int eMovie_pedirPuntaje()
 //-----------------------------------------------------------------------------------------------//
 void eMovie_pedirTitulo(char* retorno)
 {
-   pedirStringValido(&retorno, PELICULA_MSJ_INGRESE_TITULO, PELICULA_MSJ_REINGRESE_TITULO, PELICULA_LARGO_TITULO);
+   pedirStringValido(retorno, PELICULA_MSJ_INGRESE_TITULO, PELICULA_MSJ_REINGRESE_TITULO, PELICULA_LARGO_TITULO);
 }
 //-----------------------------------------------------------------------------------------------//
 void eMovie_pedirGenero(char* retorno)
 {
-   pedirStringValido(&retorno, PELICULA_MSJ_INGRESE_GENERO, PELICULA_MSJ_REINGRESE_GENERO, PELICULA_LARGO_GENERO);
+   pedirStringValido(retorno, PELICULA_MSJ_INGRESE_GENERO, PELICULA_MSJ_REINGRESE_GENERO, PELICULA_LARGO_GENERO);
 }
 //-----------------------------------------------------------------------------------------------//
 void eMovie_pedirDescripcion(char* retorno)
 {
-   pedirStringValido(&retorno, PELICULA_MSJ_INGRESE_DESCRIPCION, PELICULA_MSJ_REINGRESE_DESCRIPCION, PELICULA_LARGO_DESCRIPCION);
+   pedirStringValido(retorno, PELICULA_MSJ_INGRESE_DESCRIPCION, PELICULA_MSJ_REINGRESE_DESCRIPCION, PELICULA_LARGO_DESCRIPCION);
 }
 //-----------------------------------------------------------------------------------------------//
 void eMovie_pedirLinkImagen(char* retorno)
 {
-   pedirStringValido(&retorno, PELICULA_MSJ_INGRESE_LINK, PELICULA_MSJ_REINGRESE_LINK, PELICULA_LARGO_LINK);
+   pedirStringValido(retorno, PELICULA_MSJ_INGRESE_LINK, PELICULA_MSJ_REINGRESE_LINK, PELICULA_LARGO_LINK);
 }
 //-----------------------------------------------------------------------------------------------//
 eMovie eMovie_pedirIngreso(eMovie* listadoPeliculas, int limitePeliculas)
@@ -248,17 +248,17 @@ eMovie eMovie_pedirIngreso(eMovie* listadoPeliculas, int limitePeliculas)
 
    retorno.idPelicula = eMovie_siguienteId(listadoPeliculas, limitePeliculas);
 
-   eMovie_pedirTitulo((char *)&(retorno.titulo));
+   eMovie_pedirTitulo((char*)&(retorno.titulo));
 
-   eMovie_pedirGenero((char *)&(retorno.genero));
+   eMovie_pedirGenero((char*)&(retorno.genero));
 
    retorno.duracion = eMovie_pedirDuracion();
 
-   eMovie_pedirDescripcion((char *)&(retorno.descripcion));
+   eMovie_pedirDescripcion((char*)&(retorno.descripcion));
 
    retorno.puntaje = eMovie_pedirPuntaje();
 
-   eMovie_pedirLinkImagen((char *)&(retorno.linkImagen));
+   eMovie_pedirLinkImagen((char*)&(retorno.linkImagen));
 
    retorno.estado = OCUPADO;
 
@@ -340,7 +340,7 @@ int eMovie_alta(eMovie* listadoPeliculas, int limitePeliculas)
       limpiarPantallaYMostrarTitulo(PELICULA_ALTA_TITULO);
 
       posicion = eMovie_buscarLugarLibre(listadoPeliculas, limitePeliculas);
-      if(posicion < -1)
+      if(posicion < 0)
       {
          imprimirEnPantalla(PELICULA_MSJ_NO_MAS_LUGAR);
       }
