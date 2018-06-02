@@ -380,10 +380,17 @@ int eMovie_modificarUno(eMovie* registro)
 {
    int retorno = -1;
    int huboCambios = 0;
-   eMenu menuModificar = {/*cantidad de opciones*/PELICULA_MENU_MODIFICAR_UNO_CANT,
-                     /*codigos*/{1,2,3,4,5,6,9,0},
-                     /*descripciones*/{PELICULA_MENU_MODIFICAR_UNO_DETALLE1,PELICULA_MENU_MODIFICAR_UNO_DETALLE2,PELICULA_MENU_MODIFICAR_UNO_DETALLE3,PELICULA_MENU_MODIFICAR_UNO_DETALLE4,PELICULA_MENU_MODIFICAR_UNO_DETALLE5,PELICULA_MENU_MODIFICAR_UNO_DETALLE6,PELICULA_MENU_MODIFICAR_UNO_DETALLE9,PELICULA_MENU_MODIFICAR_UNO_DETALLE0},
-                     /*titulo del menu*/{PELICULA_MENU_MODIFICAR_UNO_TITULO}};
+   eMenu menuModificar = {/*titulo del menu*/{PELICULA_MENU_MODIFICAR_UNO_TITULO},
+                          /*cantidad de opciones*/PELICULA_MENU_MODIFICAR_UNO_CANT,
+                          /*codigos*/{1,2,3,4,5,6,9,0},
+                          /*descripciones*/{PELICULA_MENU_MODIFICAR_UNO_DETALLE1,
+                                            PELICULA_MENU_MODIFICAR_UNO_DETALLE2,
+                                            PELICULA_MENU_MODIFICAR_UNO_DETALLE3,
+                                            PELICULA_MENU_MODIFICAR_UNO_DETALLE4,
+                                            PELICULA_MENU_MODIFICAR_UNO_DETALLE5,
+                                            PELICULA_MENU_MODIFICAR_UNO_DETALLE6,
+                                            PELICULA_MENU_MODIFICAR_UNO_DETALLE9,
+                                            PELICULA_MENU_MODIFICAR_UNO_DETALLE0}};
    int opcion;
    char finalizar = 'N';
 

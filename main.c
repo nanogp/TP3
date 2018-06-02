@@ -20,10 +20,17 @@
 
 int main()
 {
-   eMenu menuPrincipal = {/*cantidad de opciones*/MAIN_MENU_CANT,
-                          /*codigos*/{1,2,3,4,5,0},
-                          /*descripciones*/{MAIN_MENU_DETALLE1,MAIN_MENU_DETALLE2,MAIN_MENU_DETALLE3,MAIN_MENU_DETALLE4,MAIN_MENU_DETALLE5,MAIN_MENU_DETALLE0},
-                          /*titulo del menu*/{MAIN_MENU_TITULO}};
+   eMenu menuPrincipal = {/*titulo del menu*/{MAIN_MENU_TITULO},
+                          /*cantidad de opciones*/MAIN_MENU_CANT,
+                          /*codigos*/{1,2,3,4,
+                                      //5,
+                                      0},
+                          /*descripciones*/{MAIN_MENU_DETALLE1,
+                                            MAIN_MENU_DETALLE2,
+                                            MAIN_MENU_DETALLE3,
+                                            MAIN_MENU_DETALLE4,
+                                            //MAIN_MENU_DETALLE5,
+                                            MAIN_MENU_DETALLE0}};
    int opcion;
    char salirDelPrograma = 'N';
 
@@ -35,7 +42,7 @@ int main()
    eMovie_init(listadoPeliculas, PELICULA_CANT_MAX);
    eArchivoBinario_leer(ARCHIVO_BINARIO_NOMBRE, listadoPeliculas, PELICULA_CANT_MAX);
 
-   /************************ GENERAR DATOS POR HARDCODE PARA DEBUG *******************************/
+   /************************ GENERA DATOS POR HARDCODE PARA DEBUG ********************************/
    /************************ (SOLO SI EL ARCHIVO BINARIO NO EXISTE) ******************************/
    eArchivoBinario_initHardcode(listadoPeliculas);
 

@@ -208,7 +208,7 @@ int eMovie_pedirPuntaje();
  * \return void
  *
  */
-void eArchivoHtml_pedirTitulo(char* retorno);
+void eMovie_pedirTitulo(char* retorno);
 //-----------------------------------------------------------------------------------------------//
 /** \brief solicita al usuario que ingrese un genero válido para una película y lo asigna a un puntero
  *

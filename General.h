@@ -22,6 +22,8 @@
 #define MSJ_DATOS_A_MODIFICAR "\nDatos a modificar:\n"
 #define MSJ_SALIR_DEL_PROGRAMA "Confirma que desea salir del programa?"
 
+/**************************** MENSAJES ERROR *****************************************************/
+#define MSJ_MALLOC_STRING_ERROR "\nNo se pudo asignar memoria para el texto solicitado"
 
 /**************************** BUSQUEDA ***********************************************************/
 /** \brief busca coincidencia de un valor entero dentro de un array
@@ -90,25 +92,23 @@ float pedirFloat(char*);
  */
 float pedirFloatValido(char*, char*, float, float);
 //-----------------------------------------------------------------------------------------------//
-/** \brief pide memoria para un string del tamaño especificado en el limite
+/** \brief pide memoria para un string del tamaño especificado en el limite y retorna su puntero
  *
- * \param string char** direccion del puntero a char donde se retorna el string creado
  * \param limite int el tamaño
- * \return int devuelve cero si no hubo error
+ * \return char* puntero a char donde se retorna el string creado
  *
  */
-int constructorString(char** string, int limite);
+char* constructorString(int limite);
 //-----------------------------------------------------------------------------------------------//
-/** \brief pide memoria para una cadena de texto y su ingreso validado
+/** \brief pide memoria para una cadena de texto y realiza su ingreso validado
  *
- * \param stringValido char*: direccion del puntero a char donde se retorna la cadena ingresada
  * \param mensajeIngreso char* : el mensaje al usuario
  * \param mensajeReingreso char* : el mensaje al usuario en caso de error
  * \param limite int: el límite para la cantidad de caracteres
- * \return int devuelve cero si no hubo error
+ * \return char* puntero a char donde se retorna el string creado y validado
  *
  */
-int constructorStringParametrizado(char** stringValido, char* mensajeIngreso, char* mensajeReingreso, int limite);
+char* constructorStringParametrizado(char* mensajeIngreso, char* mensajeReingreso, int limite);
 //-----------------------------------------------------------------------------------------------//
 /** \brief pide que se ingrese una cadena de texto y la asigna a una variable
  *

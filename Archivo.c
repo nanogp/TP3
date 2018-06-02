@@ -97,9 +97,14 @@ int eArchivoHtml_generarCodigoHtmlPelicula(char* htmlPelicula, eMovie* pelicula)
    return retorno;
 }
 //-----------------------------------------------------------------------------------------------//
-void eArchivoHtml_pedirNombreArchivo(char** retorno)
+char* eArchivoHtml_pedirNombreArchivo()
 {
-   constructorStringParametrizado(retorno, ARCHIVO_HTML_MSJ_INGRESE_NOMBRE, ARCHIVO_HTML_MSJ_REINGRESE_NOMBRE, ARCHIVO_HTML_LARGO_NOMBRE);
+   char* retorno;
+
+   retorno = constructorStringParametrizado(ARCHIVO_HTML_MSJ_INGRESE_NOMBRE, ARCHIVO_HTML_MSJ_REINGRESE_NOMBRE, ARCHIVO_HTML_LARGO_NOMBRE);
+   strcat(retorno, ARCHIVO_HTML_EXTENSION);
+
+   return retorno;
 }
 //-----------------------------------------------------------------------------------------------//
 int eArchivoHtml_escribirArchivoHtml(char* nombreArchivo, char* codigoHtml)
@@ -171,7 +176,7 @@ int eArchivoHtml_generarWeb(eMovie* listadoPeliculas, int limitePeliculas)
                             "</body>\n"
                             "</html>\n");
 
-        eArchivoHtml_pedirNombreArchivo(&nombreArchivo);
+         nombreArchivo = eArchivoHtml_pedirNombreArchivo();
 
          //llamo a escribir el archivo en disco con el codigo generado
          if(eArchivoHtml_escribirArchivoHtml(nombreArchivo, codigoHtml) == 0)

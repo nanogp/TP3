@@ -117,59 +117,56 @@ float pedirFloatValido(char* mensajeIngreso, char* mensajeReingreso, float limit
    return retorno;
 }
 //-----------------------------------------------------------------------------------------------//
-int constructorString(char** string, int limite)
+char* constructorString(int limite)
 {
-   int retorno = -1;
+   char* retorno;
 
-   *string = (char*) malloc(sizeof(char)*limite);
-
-   if(string !=NULL)
-   {
-      retorno = 0;
-   }
+   retorno = (char*)malloc(sizeof(char)*limite);
 
    return retorno;
 }
 //-----------------------------------------------------------------------------------------------//
-int constructorStringParametrizado(char** stringValido, char* mensajeIngreso, char* mensajeReingreso, int limite)
+char* constructorStringParametrizado(char* mensajeIngreso, char* mensajeReingreso, int limite)
 {
-   int retorno = -1;
    int longitud;
    char valido = 'N';
    char* stringValidar;
+   char* retorno;
 
-   constructorString(&stringValidar, limite+5);
-   constructorString(stringValido, limite);
+   stringValidar = constructorString(limite+5);
+   retorno = constructorString(limite);
 
-   if(stringValidar !=NULL && stringValido != NULL)
+   if(stringValidar !=NULL && retorno != NULL)
    {
-      retorno = 0;
+       pedirString(stringValidar, mensajeIngreso);
+
+       do
+       {
+          longitud = strlen(stringValidar);
+
+          if(longitud > limite)
+          {
+             printf("\nEl texto ingresado supera el l¡mite de %d caracteres establecido.", limite);
+             pedirString(stringValidar, mensajeIngreso);
+          }
+          else if(longitud == 0)
+          {
+             printf("\nEl texto ingresado no puede estar vacio. Ingrese al menos 1 caracter.");
+             pedirString(stringValidar, mensajeIngreso);
+          }
+          else
+          {
+             valido = 'S';
+             strncpy(retorno, stringValidar, sizeof(char)*limite);
+          }
+
+       }
+       while(valido == 'N');
    }
-
-   pedirString(stringValidar, mensajeIngreso);
-
-   do
+   else
    {
-      longitud = strlen(stringValidar);
-
-      if(longitud > limite)
-      {
-         printf("\nEl texto ingresado supera el l¡mite de %d caracteres establecido.", limite);
-         pedirString(stringValidar, mensajeIngreso);
-      }
-      else if(longitud == 0)
-      {
-         printf("\nEl texto ingresado no puede estar vacio. Ingrese al menos 1 caracter.");
-         pedirString(stringValidar, mensajeIngreso);
-      }
-      else
-      {
-         valido = 'S';
-         strncpy(*stringValido, stringValidar, sizeof(char)*limite);
-      }
-
+        imprimirEnPantalla(MSJ_MALLOC_STRING_ERROR);
    }
-   while(valido == 'N');
 
    return retorno;
 }
@@ -188,7 +185,7 @@ int pedirStringValido(char* stringValido, char* mensajeIngreso, char* mensajeRei
    char valido = 'N';
    char* stringValidar;
 
-   constructorString(&stringValidar, limite+5);
+   stringValidar = constructorString(limite+5);
 
    if(stringValidar !=NULL && stringValido != NULL)
    {

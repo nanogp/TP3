@@ -18,6 +18,7 @@
 #define ARCHIVO_NRO_LINEAS_INI 13
 #define ARCHIVO_NRO_LINEAS_FIN 8
 #define ARCHIVO_NRO_LINEAS_PELICULA 14
+#define ARCHIVO_HTML_EXTENSION ".html"
 
 /**************************** TITULOS ************************************************************/
 #define ARCHIVO_GENERAR_WEB_TITULO "GENERAR PAGINA WEB"
@@ -28,8 +29,8 @@
 #define ARCHIVO_MSJ_HTML_OK "\n\nSe gener¢ la p gina web en el archivo: "
 
 /**************************** MENSAJES INPUT *****************************************************/
-#define ARCHIVO_HTML_MSJ_INGRESE_NOMBRE "\nIngrese el nombre para el archivo web (.html): "
-#define ARCHIVO_HTML_MSJ_REINGRESE_NOMBRE "\nReingrese el nombre para el archivo web (.html): "
+#define ARCHIVO_HTML_MSJ_INGRESE_NOMBRE "\nIngrese el nombre para el archivo web (sin extension .html): "
+#define ARCHIVO_HTML_MSJ_REINGRESE_NOMBRE "\nReingrese el nombre para el archivo web (sin extension .html): "
 
 /**************************** INICIALIZACIONES ***************************************************/
 /** \brief inicializo el archivo con datos en caso de que no exista
@@ -62,11 +63,10 @@ int eArchivoHtml_generarCodigoHtmlPelicula(char* htmlPelicula, eMovie* pelicula)
 /**************************** GESTION ARCHIVO HTML ***********************************************/
 /** \brief solicita al usuario que ingrese un nombre válida para generar la web y la asigna a un puntero
  *
- * \param retorno char* la direccion del puntero para guardar el nombre validado
- * \return void
+ * \return retorno char* el puntero donde se guardó el nombre validado
  *
  */
-void eArchivoHtml_pedirNombreArchivo(char** retorno);
+char* eArchivoHtml_pedirNombreArchivo();
 //-----------------------------------------------------------------------------------------------//
 /** \brief escribe un archivo html en disco con el codigo recibido por parametro
  *

@@ -3,18 +3,18 @@
 #define MENU_H_INCLUDED
 
 /**************************** LIMITES ************************************************************/
-#define MENU_LARGO_DESCRIPCION 100
 #define MENU_LARGO_TITULO 100
 #define MENU_CANT_MAX 20
+#define MENU_LARGO_DESCRIPCION 100
 
 
 /**************************** ESTRUCTURAS ********************************************************/
 typedef struct
 {
+   char titulo[MENU_LARGO_TITULO];
    int limiteOpciones;
    int codigos[MENU_CANT_MAX];
    char descripciones[MENU_CANT_MAX][MENU_LARGO_DESCRIPCION];
-   char titulo[MENU_LARGO_TITULO];
 } eMenu;
 
 
